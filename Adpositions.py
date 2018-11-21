@@ -4,17 +4,21 @@ import json
 #Function has: EST, HST. Access to all lexicons.
 #EST = [[token, tag]]
 #HST = [token]
+# Get the part of speech specific lexicon from the main JSON
+with open('JSON/lexicon.json', 'r') as fp:
+    lexicon_dict = json.loads(fp.read())
 #NOUNLEXICON: Englishkey : [nominative_inflection, grammatical_gender, accusative_inflection]
-Noun_Lexicon = {'cat': ['billi', 'F', 'billi']} #G: M, F, U.
+Noun_Lexicon = lexicon_dict['nouns'] #G: M, F, U.
 #VERBLEXICON: Englishkey : [male_inflection, female_inflection, person] Person: if the English is in 'First Person' or 'Third Person'
-Verb_Lexicon = { 'eats': ['khata', 'khaati', 'Third Person']}
+Verb_Lexicon = lexicon_dict['verbs']
 #ADJECTIVELEXICON: Englishkey :  [male_inflection, female_inflection, accusative_inflection]
-ADJ_Lexicon = {'big': ['bada', 'badi', 'bade'], 'small': ['chhota', 'chhoti', '']}
+ADJ_Lexicon = lexicon_dict['adjectives']
 #ADPOSITIONLEXICON: Englishkey : postposition
-ADP_Lexicon = {'in': 'mein'}
-#PRONOUNLEXICON: Englishkey: [nominative_inflection, accusative_inflection]
-Pronoun_Lexicon = {'I': 'main', 'me': 'mujhko', 'you': ['tu', 'tujhko'], 'he': 'voh', 'him': 'usko', 'she': 'voh', 'her': 'usko'} #Print this and provide spelling to user
-#EST = [['The', 'DET'], ['rat', 'NOUN'],['eats', 'VERB'], ['on', 'ADP'] , ['the', 'DET'], ['cat', 'NOUN']]
+ADP_Lexicon = lexicon_dict['adpositions']
+#PRONOUNLEXICON: Englishkey: Hindikey
+Pronoun_Lexicon = lexicon_dict['pronouns'] #Print this and provide spelling to user, ask user to separate mujh ko.
+#EST = [['The', 'DET'], ['you', 'PRON'],['write', 'VERB'], ['on', 'ADP'], ['big', 'ADJ'], ['and', 'CONJ'],['fat', 'ADJ'], ['cat', 'NOUN']]
+EST = []
 with open('JSON/partsOfSpeech.json', 'r') as f: #calling partsOfSpeech.json for read and storing it into a dictionary
     pos_dict = json.loads(f.read())
 
@@ -53,4 +57,13 @@ for word in EST:
 					ADP_Lexicon.update({word[0]: Hindi_ADP})
 					updated = True
 			search_index = search_index+1
-print(ADP_Lexicon)
+# Load the updated lexicon to the file
+updated_lex = {
+    "nouns": Noun_Lexicon,
+    "verbs": Verb_Lexicon,
+    "adjectives": ADJ_Lexicon,
+    "adpositions": ADP_Lexicon,
+    "pronouns": Pronoun_Lexicon
+}
+with open('JSON/lexicon.json', 'w') as fp:
+    json.dump(updated_lex, fp)
