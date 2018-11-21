@@ -22,4 +22,3 @@ response = request.execute()
 
 with open('JSON/partsOfSpeech.json', 'w') as fp:
 	json.dump(response, fp, indent=2)
-#lalalala
