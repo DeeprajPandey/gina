@@ -53,6 +53,8 @@ for word in EST:
 				if(found):
 					HST_index = HST.index(Current_word_h) #found the noun
 					HST_index = HST_index +1 #the postposition will always be EXACTLY after the noun in Hindi, because all the adjectives will come before; verbs etc come after the Adpositional Phrase
+					if(HST[HST_index]=='ke'): #many postpositions will do this: table ke upar, neeche, etc.
+						HST_index = HST_index +1
 					Hindi_ADP = HST[HST_index]
 					ADP_Lexicon.update({word[0]: Hindi_ADP})
 					updated = True
