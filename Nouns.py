@@ -112,6 +112,8 @@ for word in EST:
 				if(found):
 					HST_index = HST.index(Current_word_h) #what if multiple instances? Constraint: only one
 					HST_index= HST_index-1 #Previous word in Hindi, since NP, always feasible because postposition will not be first word of sentence: CONSTRAINT: 'upar ke taare chamke' not allowed
+					if(HST[HST_index]=='ke'): #many postpositions will do this: table ke upar, neeche, etc.
+						HST_index = HST_index -1
 					H_noun = HST[HST_index]
 					if(H_noun.endswith('e') and H_noun != word[0]): #inflected for prepositions, only male nouns do this! ASSUMPTION: not dealing with some female noun that may end in 'e'
 					#second condition, because some english nouns may stay as they are: e.g. table, and if they end in 'e' that'll be a problem
