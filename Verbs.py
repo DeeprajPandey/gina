@@ -1,4 +1,4 @@
-import json
+import json, interface.py
 #VERBS
 #Function has: EST, HST. Access to all lexicons.
 #EST = [[token, tag]]
@@ -30,7 +30,9 @@ for x in pos_dict["tokens"]:
     row.append(x["text"]["content"])
     row.append(x["partOfSpeech"]["tag"])
     EST.append(row)
-HST = ['tun', 'mujh', 'par', 'likhta', 'hai']
+
+#HST = ['tun', 'mujh', 'par', 'likhta', 'hai']
+HST = interface.text
 HST_size = len(HST)
 EST_size = len(EST)
 index=-1;
