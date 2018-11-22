@@ -1,4 +1,4 @@
-import json
+import json, interface.py
 #PREPOSITIONS
 #MAJOR ASSUMPTION: USER WILL ENTER THE ENTIRE PREPOSITION JAMMED INTO ONE WORD
 #Function has: EST, HST. Access to all lexicons.
@@ -29,7 +29,9 @@ for x in pos_dict["tokens"]:
     row.append(x["text"]["content"])
     row.append(x["partOfSpeech"]["tag"])
     EST.append(row)
-HST = ['chuha', 'billi', 'par', 'khata', 'hai']
+
+#HST = ['chuha', 'billi', 'par', 'khata', 'hai']
+HST = interface.text
 HST_size = len(HST)
 EST_size = len(EST)
 index=-1;

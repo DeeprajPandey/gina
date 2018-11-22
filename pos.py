@@ -4,8 +4,9 @@
 
 import json
 import googleapiclient.discovery
+from interface import usrInput
 
-text = 'The quick brown fox jumps over the lazy dog. The octopus was running a marathon with his friend, Ms. Cat. Interestingly, Mr. Octopus won the race.'
+text = usrInput
 
 body = {
 	'document': {
