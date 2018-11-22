@@ -1,4 +1,6 @@
-import json, interface.py
+# json for Google Language API and lexicon
+# sys for accepting the string as command line argument when the file is called
+import json, sys
 #Still to be addded: Possessors
 #NOUNS
 #Function has: EST, HST. Access to all lexicons.
@@ -32,8 +34,10 @@ for x in pos_dict["tokens"]:
     row.append(x["partOfSpeech"]["tag"])
     EST.append(row)
 
-#HST = ['billi', 'chuhe', 'ko', 'khati', 'hai']
-HST = interface.text
+# issue: HST stores only the first word.
+# figure out a way to accept the entire string
+HST = sys.argv[1]
+
 HST_size = len(HST)
 EST_size = len(EST)
 index=-1;
