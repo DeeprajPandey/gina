@@ -364,4 +364,4 @@ updated_lex = {
     "pronouns": Pronoun_Lexicon
 }
 with open('JSON/lexicon.json', 'w') as fp:
-    json.dump(updated_lex, fp)
+    json.dump(updated_lex, fp, indent = 2)
