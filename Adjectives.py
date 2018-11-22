@@ -31,9 +31,13 @@ for x in pos_dict["tokens"]:
     row.append(x["partOfSpeech"]["tag"])
     EST.append(row)
 
-# issue: HST stores only the first word.
-# figure out a way to accept the entire string
-HST = sys.argv[1]
+h_arg = ''
+h_index=0 #to keep track of the index of the program name so that it isn't taken into account as a string
+for x in sys.argv: #taking the hindi text from the command line and storing into a variable
+    if(h_index != 0): #this is required to skip the name of the program from the command line
+        h_arg = h_arg + x + ' '
+    h_index=1
+HST = h_arg.split() #splits individual words into a list which is stored in HST
 
 HST_size = len(HST)
 EST_size = len(EST)
