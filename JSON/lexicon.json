@@ -1,1 +1,84 @@
-{"nouns": {"cat": ["billi", "F", "billi"]}, "verbs": {"eats": ["khata", "khaati", "Third Person"], "walks": ["chalta", "chalti", "Third Person"]}, "adjectives": {"small": ["chhota", "chhoti", ""], "big": ["bada", "badi", "bade"]}, "adpositions": {"on": "par", "in": "mein"}, "pronouns": {"me": "mujhko", "her": "usko", "I": "main", "she": "voh", "you": ["tu", "tujhko"], "him": "usko", "he": "voh"}}
+{
+  "nouns": {
+    "cat": [
+      "billi",
+      "F",
+      "billi"
+    ],
+    "dog": [
+      "",
+      "U",
+      "kutte"
+    ],
+    "runs": [
+      "billi",
+      "F",
+      "billi"
+    ],
+    "stands": [
+      "billi",
+      "F",
+      "billi"
+    ],
+    "woman": [
+      "aurat",
+      "F",
+      "aurat"
+    ]
+  },
+  "verbs": {
+    "eats": [
+      "khata",
+      "khaati",
+      "Third Person"
+    ],
+    "walks": [
+      "chalta",
+      "chalti",
+      "Third Person"
+    ],
+    "sit": [
+      "",
+      "baithti",
+      "First, Second Person"
+    ],
+    "stands": [
+      "",
+      "khadihoti",
+      "Third Person"
+    ]
+  },
+  "adjectives": {
+    "small": [
+      "chhota",
+      "chhoti",
+      ""
+    ],
+    "big": [
+      "bada",
+      "badi",
+      "bade"
+    ],
+    "black": [
+      "",
+      "kaali",
+      ""
+    ]
+  },
+  "adpositions": {
+    "on": "par",
+    "in": "mein"
+  },
+  "pronouns": {
+    "me": "mujhko",
+    "her": "usko",
+    "I": "main",
+    "she": "voh",
+    "you": [
+      "tu",
+      "tujhko"
+    ],
+    "him": "usko",
+    "he": "voh"
+  }
+}

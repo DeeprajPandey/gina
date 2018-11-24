@@ -2,7 +2,7 @@
   "sentences": [
     {
       "text": {
-        "content": "Checking once again.",
+        "content": "The black woman stands",
         "beginOffset": 0
       }
     }
@@ -10,36 +10,11 @@
   "tokens": [
     {
       "text": {
-        "content": "Checking",
+        "content": "The",
         "beginOffset": 0
       },
       "partOfSpeech": {
-        "tag": "VERB",
-        "aspect": "ASPECT_UNKNOWN",
-        "case": "CASE_UNKNOWN",
-        "form": "FORM_UNKNOWN",
-        "gender": "GENDER_UNKNOWN",
-        "mood": "MOOD_UNKNOWN",
-        "number": "NUMBER_UNKNOWN",
-        "person": "PERSON_UNKNOWN",
-        "proper": "PROPER_UNKNOWN",
-        "reciprocity": "RECIPROCITY_UNKNOWN",
-        "tense": "TENSE_UNKNOWN",
-        "voice": "VOICE_UNKNOWN"
-      },
-      "dependencyEdge": {
-        "headTokenIndex": 0,
-        "label": "ROOT"
-      },
-      "lemma": "check"
-    },
-    {
-      "text": {
-        "content": "once",
-        "beginOffset": 9
-      },
-      "partOfSpeech": {
-        "tag": "ADV",
+        "tag": "DET",
         "aspect": "ASPECT_UNKNOWN",
         "case": "CASE_UNKNOWN",
         "form": "FORM_UNKNOWN",
@@ -54,17 +29,17 @@
       },
       "dependencyEdge": {
         "headTokenIndex": 2,
-        "label": "ADVMOD"
+        "label": "DET"
       },
-      "lemma": "once"
+      "lemma": "The"
     },
     {
       "text": {
-        "content": "again",
-        "beginOffset": 14
+        "content": "black",
+        "beginOffset": 4
       },
       "partOfSpeech": {
-        "tag": "ADV",
+        "tag": "ADJ",
         "aspect": "ASPECT_UNKNOWN",
         "case": "CASE_UNKNOWN",
         "form": "FORM_UNKNOWN",
@@ -78,24 +53,24 @@
         "voice": "VOICE_UNKNOWN"
       },
       "dependencyEdge": {
-        "headTokenIndex": 0,
-        "label": "ADVMOD"
+        "headTokenIndex": 2,
+        "label": "AMOD"
       },
-      "lemma": "again"
+      "lemma": "black"
     },
     {
       "text": {
-        "content": ".",
-        "beginOffset": 19
+        "content": "woman",
+        "beginOffset": 10
       },
       "partOfSpeech": {
-        "tag": "PUNCT",
+        "tag": "NOUN",
         "aspect": "ASPECT_UNKNOWN",
         "case": "CASE_UNKNOWN",
         "form": "FORM_UNKNOWN",
         "gender": "GENDER_UNKNOWN",
         "mood": "MOOD_UNKNOWN",
-        "number": "NUMBER_UNKNOWN",
+        "number": "SINGULAR",
         "person": "PERSON_UNKNOWN",
         "proper": "PROPER_UNKNOWN",
         "reciprocity": "RECIPROCITY_UNKNOWN",
@@ -103,10 +78,35 @@
         "voice": "VOICE_UNKNOWN"
       },
       "dependencyEdge": {
-        "headTokenIndex": 0,
-        "label": "P"
+        "headTokenIndex": 3,
+        "label": "NSUBJ"
       },
-      "lemma": "."
+      "lemma": "woman"
+    },
+    {
+      "text": {
+        "content": "stands",
+        "beginOffset": 16
+      },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "INDICATIVE",
+        "number": "SINGULAR",
+        "person": "THIRD",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "PRESENT",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": {
+        "headTokenIndex": 3,
+        "label": "ROOT"
+      },
+      "lemma": "stand"
     }
   ],
   "language": "en"
