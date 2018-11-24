@@ -47,7 +47,7 @@ index=-1;
 for word in EST:
 	index=index+1 #gives us the index of word
 	if(word[1]=='VERB' and word[0] not in Verb_Lexicon): #UNKNOWN VERB
-		G ='' #grammatical gender
+		VG ='' #grammatical gender
 		search_index = index -1
 		updated = False
 		while(search_index > -1 and updated==False):
@@ -72,7 +72,7 @@ for word in EST:
 					if(EST[EST_index][1] == 'ADP' or EST[EST_index][1] == 'ADJ'):
 						ADP_count= ADP_count+1
 					EST_index= EST_index+1
-				print(EST_index)
+				#print(EST_index)
 				if(EST_index!=EST_size):
 					Obj_exists=True
 				#print('ADP: ', ADP_count)
@@ -80,11 +80,19 @@ for word in EST:
 				if(found): # interceding prepositions give rise to sentences like 'The cat is on the table'
 					HST_index = HST.index(Current_word_h) #only one instance
 					VG = NG #verb inflects for subject
-					HST_index= HST_index+1 #We have reached the verb in Hindi SOV if object doesn't exist: SV
 					if(Obj_exists):
-						HST_index= HST_index+1 + ADP_count #We have reached the object in Hindi SOV
-						if(HST[HST_index] == 'ko'):
+						skipper=0
+						while(skipper<ADP_count): #to count adjectives before the object, adpositions
 							HST_index= HST_index+1
+							skipper = skipper+1
+							if(HST[HST_index] == 'aur' or HST[HST_index] == 'or' or HST[HST_index] == 'aar' or HST[HST_index] == 'lekin' or HST[HST_index] == 'par'): #consecutive adjectives in Hindi may be interlocuted by 'and' and 'but'
+								HST_index= HST_index+1 #we have reached the last adjective
+						HST_index= HST_index+1 #We have reached the object in Hindi SOV if it exists
+					HST_index= HST_index+1 #We have reached the verb in Hindi SOV if object doesn't exist: SV, and also if it exists in SOV
+					
+					if(HST[HST_index] == 'ko'):
+						HST_index= HST_index+1
+					
 					H_verb = HST[HST_index]
 					Person = 'Third Person' #because there were no plural nouns, and the subject was a noun, not the pronoun 'I'
 					if(VG=='U'):
@@ -119,14 +127,13 @@ for word in EST:
 						found = True		#necessary to double check if the user has entered the 'right' Hindi pronoun, not 'aap' for 'you' etc.
 				token = [Current_word, Current_word_tag] #the subject
 				EST_index = EST.index(token) + 1  #only one instance, starting from next token
-				ADJ_count=0
-				ADP_count=0
+				AD_count=0
 				Obj_exists=False
 				while((EST_index < EST_size) and (EST[EST_index][1] != 'NOUN' and EST[EST_index][1] != 'PRON')): #until we reach the object if it exists
 					if(EST[EST_index][1] == 'ADP'):
-						ADP_count= ADP_count+1
+						AD_count= AD_count+1
 					if(EST[EST_index][1] == 'ADJ'):
-						ADJ_count=ADJ_count+1
+						AD_count=AD_count+1
 					EST_index= EST_index+1
 				#print(EST_index)
 				if(EST_index!=EST_size): #if it has iterated through the whole list, object was not encountered
@@ -137,8 +144,15 @@ for word in EST:
 					HST_index = HST.index(Current_word_h) #only one instance
 					HST_index= HST_index+1 #We have reached the verb in Hindi SOV if object doesn't exist: SV, since there are no adverbs. Else we've reached object
 					if(Obj_exists):
-						HST_index= HST_index+1 + ADP_count + ADJ_count #We have reached the object in Hindi SOV, ADP, ADJ will only exist if object exists, since they attach to object
-						if(HST[HST_index] == 'ko'):
+						skipper=0
+						while(skipper<AD_count): #to count adjectives before the object, adpositions
+							HST_index= HST_index+1
+							skipper = skipper+1
+							if(HST[HST_index] == 'aur' or HST[HST_index] == 'or' or HST[HST_index] == 'aar' or HST[HST_index] == 'lekin' or HST[HST_index] == 'par'): #consecutive adjectives in Hindi may be interlocuted by 'and' and 'but'
+								HST_index= HST_index+1 #we have reached the last adjective
+						HST_index= HST_index+1 #We have reached the object in Hindi SOV if it exists
+					HST_index= HST_index+1 #We have reached the verb in Hindi SOV if object doesn't exist: SV, and also if it exists in SOV
+					if(HST[HST_index] == 'ko'):
 							HST_index= HST_index+1
 					H_verb = HST[HST_index]
 					if(Current_word=='you' or Current_word=='I'):
@@ -167,7 +181,7 @@ for word in EST:
 						updated = True
 			search_index = search_index -1
 		search_index = index + 1 # token after verb
-		print(search_index)
+		#print(search_index)
 		while(search_index < EST_size and updated==False):
 			Current_word = EST[search_index][0]
 			print(Current_word)
@@ -184,17 +198,17 @@ for word in EST:
 					if(Hindi_word == Hindi_N):
 						Current_word_h = Hindi_word
 						found = True	#neccessary, because although the noun is present, its accusative inflection might not be
-				print(found)
+				#print(found)
 				token = [Current_word, Current_word_tag] #the subject
-				EST_index = EST.index(token) -1  #only one instance, starting from previous to check for existence of preposition
+				EST_index = EST.index(token) -1  #only one instance, starting from previous to check for existence of preposition. No need to check for adjectives, because those will come before object in Hindi
 				ADP_count=0
-				print(EST_index)
+				#print(EST_index)
 				while(EST[EST_index][0] != word[0]): #until we reach the verb
 					if(EST[EST_index][1] == 'ADP'):
 						ADP_count= ADP_count+1
 					EST_index= EST_index-1
-				print(EST_index)
-				print(ADP_count)
+				#print(EST_index)
+				#print(ADP_count)
 				if(found):
 					HST_index = HST.index(Current_word_h) #only one instance
 					print(HST_index)
@@ -203,7 +217,7 @@ for word in EST:
 					if(HST[HST_index] == 'ko'):
 						HST_index= HST_index+1 #skip the 'ko' to reach verb
 					H_verb = HST[HST_index]
-					print(H_verb)
+					#print(H_verb)
 					Person =''
 					if(word[0].endswith('s')): #most third person English verbs end in 's'
 						Person = 'Third Person' #because there were no plural nouns, and had the subject been 'I' or 'you', we would have located it in above module; the above if statement is just to double-check
