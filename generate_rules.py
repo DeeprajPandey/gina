@@ -22,6 +22,9 @@ verb_pos = np.where(HN_tokens[1] != HN_tokens[2])[0][0]
 object_pos = np.where(HN_tokens[2] != HN_tokens[3])[0][0]
 
 # using the position in the sentence as a key (string only) and storing the value
-SVO[np.array_str(sub_pos)] = 'Subject'
-SVO[np.array_str(verb_pos)] = 'Verb'
-SVO[np.array_str(object_pos)] = 'Object'
+SVO[sub_pos] = 'Subject'
+SVO[verb_pos] = 'Verb'
+SVO[object_pos] = 'Object'
+
+for key in sorted(SVO.keys()):
+    print('%s' % SVO[key], end = ' ')
