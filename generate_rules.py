@@ -1,6 +1,21 @@
 import re, string
 import numpy as np
 
+# See how "far" two strings are from each other, character-wise
+def hamming_distance(str1, str2):
+    # Ensure length of s1 >= s2
+    if len(str2) > len(str1):
+        str1, str2 = str2, str1
+
+    # Distance is difference in length + differing chars
+    distance = len(str1) - len(str2)
+    for i, c in enumerate(str2):
+        if c != str1[i]:
+            distance += 1
+
+    return distance
+
+
 def print_SVO_rules(HN_tokens):
     SVO = {}
     PN = {}
@@ -19,8 +34,11 @@ def print_SVO_rules(HN_tokens):
     
     # Get the noun we are using in the next two sentences
     noun = HN_tokens[0][object_pos]
-    # The noun must have changed it's position as preposition might come with morphemes
-    new_noun_index = np.where(noun == HN_tokens[1])[0][0]
+    
+    for word in HN_tokens[1]:
+        if hamming_distance(noun, word) <= 1:
+            # The noun must have changed it's position as preposition might come with morphemes
+            new_noun_index = np.where(word == HN_tokens[1])[0][0]
     
     # Preposition changes in fifth and sixth
     # Store the index of the pre/post-position
@@ -40,7 +58,7 @@ def print_SVO_rules(HN_tokens):
 # Verb changes in 1,2
 # Object changes in 2,3
 EN_Sentences = ["The girl eats the banana.", "The fly is near the banana.", "The small fly.", "The fly is on top of the banana.", "The fly eats the banana.", "The girl eats the fly.", "The sad fly.", "The girl throws the banana.", "The sad girl."]
-HN_Sentences = ["Ladki ne kela khaya.", "Makhi kela ke paas hai", "Chhoti makhi.", "Makhi kela ke upar hai.", "Makhi ne kela khaya.", "Ladki ne makhi khaya.", "Dukhi makhi.", "Ladki ne kela feka.", "Dukhi ladki."]
+HN_Sentences = ["Ladki ne kela khaya.", "Makhi kele ke paas hai", "Chhoti makhi.", "Makhi kele ke upar hai.", "Makhi ne kela khaya.", "Ladki ne makhi khaya.", "Dukhi makhi.", "Ladki ne kela feka.", "Dukhi ladki."]
 HN_tokens = []
 # Regex to strip input of punctuation
 regex = re.compile('[%s]' % re.escape(string.punctuation))
