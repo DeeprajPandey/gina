@@ -115,7 +115,7 @@ def print_syntax_rules(HN_tokens):
     
     # Preposition changes in fifth and sixth
     # Store the index of the pre/post-position
-    prep_pos = np.where(HN_tokens[1] != HN_tokens[3])[0][0]
+    #prep_pos = np.where(HN_tokens[1] != HN_tokens[3])[0][0]
     
     # Get the noun that is constant in the preposition case
     # from when we parsed object
@@ -126,16 +126,26 @@ def print_syntax_rules(HN_tokens):
             # The noun must have changed it's position as preposition might come with morphemes
             new_noun_index_p = np.where(word == HN_tokens[1])[0][0]
 
-    if prep_pos < new_noun_index_p:
-        print("\nprepositions come before Nouns,")
-    elif prep_pos > new_noun_index_p:
+    mid1 = len(HN_tokens[1])/2
+    mid2 = len(HN_tokens[3])/2
+    if (new_noun_index_p < mid1 and new_noun_index_p < mid2):
         print("\nprepositions come after Nouns (postpositions),")
+    elif (new_noun_index_p >= mid1 and new_noun_index_p >= mid2):
+        print("\nprepositions come before Nouns,")
     else:
         print("PN/NP couldn't be determined with the data currently available.")
+
+
+    # if prep_pos < new_noun_index_p:
+    #     print("\nprepositions come before Nouns,")
+    # elif prep_pos > new_noun_index_p:
+    #     print("\nprepositions come after Nouns (postpositions),")
+    # else:
+    #     print("PN/NP couldn't be determined with the data currently available.")
         
     
     # Adpositions change in third and seventh
-    ad_pos = np.where(HN_tokens[2] != HN_tokens[6])[0][0]
+    # ad_pos = np.where(HN_tokens[2] != HN_tokens[6])[0][0]
     
     # Get the unchanging noun
     noun_ad = HN_tokens[4][sub_pos].lower()
@@ -145,20 +155,29 @@ def print_syntax_rules(HN_tokens):
             # The noun must have changed it's position as preposition might come with morphemes
             new_noun_index_a = np.where(word == HN_tokens[2])[0][0]
     
-    if ad_pos < new_noun_index_a:
+    mid1 = len(HN_tokens[2])/2
+    mid2 = len(HN_tokens[6])/2
+    if (new_noun_index_a < mid1 and new_noun_index_a < mid2):
         print("and adjectives come before nouns.")
-    elif prep_pos > new_noun_index_a:
+    elif (new_noun_index_a >= mid1 and new_noun_index_a >= mid2):
         print("and adjectives come after nouns.")
     else:
         print("AN/NA couldn't be determined with the data currently available.")
+
+    # if ad_pos < new_noun_index_a:
+    #     print("and adjectives come before nouns.")
+    # elif prep_pos > new_noun_index_a:
+    #     print("and adjectives come after nouns.")
+    # else:
+    #     print("AN/NA couldn't be determined with the data currently available.")
 
 # Subject changes in 0,4 (use noun from 4 for AN)
 # Verb changes in 0,7
 # Object changes in 0,5 (use noun from 0 for PN)
 # Preposition changes in 1,3
 # Adjective changes in 2,6
-EN_Sentences = ["The girl eats the banana.", "The fly is near the banana.", "The small fly.", "The fly is on top of the banana.", "The fly eats the banana.", "The girl eats the fly.", "The sad fly.", "The girl throws the banana.", "The sad girl."]
-#HN_Sentences = ["Ladki ne kela khaya.", "Makhi kele ke paas hai", "Chhoti makhi.", "Makhi kele ke upar hai.", "Makhi ne kela khaya.", "Ladki ne makhi khaya.", "Dukhi makhi.", "Ladki ne kela feka.", "Dukhi ladki."]
+EN_Sentences = ["The girl eats the banana.", "Near the banana?", "The small fly.", "On top of the banana?", "The fly eats the banana.", "The girl eats the fly.", "The sad fly.", "The girl throws the banana.", "The sad girl."]
+#HN_Sentences = ["Ladki ne kela khaya.", "Kele ke paas?", "Chhoti makhi.", "Kele ke upar.", "Makhi ne kela khaya.", "Ladki ne makhi khaya.", "Dukhi makhi.", "Ladki ne kela feka.", "Dukhi ladki."]
 HN_Sentences = []
 HN_tokens = []
 # Regex to strip input of punctuation
@@ -170,11 +189,10 @@ if __name__ == '__main__':
         print("Sentence in English: " + sentence)
         h_input = input("Enter translation in your language: ")
         HN_Sentences.append(h_input)
+    # Tokenise the inputs. HN_tokens = [['hello','world']['sentence','two']]
+    for h_st in HN_Sentences: 
+        tokenize = np.array(regex.sub('', h_st).split())
+        HN_tokens.append(tokenize)
 
-	# Tokenise the inputs. HN_tokens = [['hello','world']['sentence','two']]
-	for h_st in HN_Sentences:
-    	tokenize = np.array(regex.sub('', h_st).split())
-	    HN_tokens.append(tokenize)
-
-	# Now, send the tokenised form to 
-	print_syntax_rules(HN_tokens)
+    # Now, send the tokenised form to 
+    print_syntax_rules(HN_tokens)
