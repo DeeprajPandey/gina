@@ -93,9 +93,8 @@ def jaro_winkler_distance(sherlock, watson):
     return weight
 
 
-def print_SVO_rules(HN_tokens):
+def print_syntax_rules(HN_tokens):
     SVO = {}
-    PN = {}
     # [0][0] to flatten the arrays into an integers
     # Subject changes in first 2 sentences
     sub_pos = np.where(HN_tokens[0] != HN_tokens[4])[0][0]
@@ -108,28 +107,49 @@ def print_SVO_rules(HN_tokens):
     SVO[sub_pos] = 'Subject'
     SVO[verb_pos] = 'Verb'
     SVO[object_pos] = 'Object'
+    print("In your language, SVO order is", end = ' ')
+    for key in sorted(SVO.keys()):
+        print('%s' % SVO[key], end = ', ')
     
-    # Get the noun we are using in the next two sentences
-    noun = HN_tokens[0][object_pos]
-    
-    for word in HN_tokens[1]:
-        if jaro_winkler_distance(noun, word) >= 0.9 and hamming_distance(noun, word) <= 1:
-            # The noun must have changed it's position as preposition might come with morphemes
-            new_noun_index = np.where(word == HN_tokens[1])[0][0]
     
     # Preposition changes in fifth and sixth
     # Store the index of the pre/post-position
     prep_pos = np.where(HN_tokens[1] != HN_tokens[3])[0][0]
     
-    if prep_pos < new_noun_index:
-        print("Prepositions come before Nouns in your language.")
-    elif prep_pos > new_noun_index:
-        print("Prepositions come after Nouns in your language (postpositions).")
+    # Get the noun that is constant in the preposition case
+    # from when we parsed object
+    noun_p = HN_tokens[0][object_pos].lower()
+    
+    for word in HN_tokens[1]:
+        if jaro_winkler_distance(noun_p, word) >= 0.9 and hamming_distance(noun_p, word) <= 1:
+            # The noun must have changed it's position as preposition might come with morphemes
+            new_noun_index_p = np.where(word == HN_tokens[1])[0][0]
+
+    if prep_pos < new_noun_index_p:
+        print("\nprepositions come before Nouns,")
+    elif prep_pos > new_noun_index_p:
+        print("\nprepositions come after Nouns (postpositions),")
     else:
         print("PN/NP couldn't be determined with the data currently available.")
-
-    for key in sorted(SVO.keys()):
-        print('%s' % SVO[key], end = ' ')
+        
+    
+    # Adpositions change in third and seventh
+    ad_pos = np.where(HN_tokens[2] != HN_tokens[6])[0][0]
+    
+    # Get the unchanging noun
+    noun_ad = HN_tokens[4][sub_pos].lower()
+    
+    for word in HN_tokens[2]:
+        if jaro_winkler_distance(noun_ad, word) >= 0.9 and hamming_distance(noun_ad, word) <= 1:
+            # The noun must have changed it's position as preposition might come with morphemes
+            new_noun_index_a = np.where(word == HN_tokens[2])[0][0]
+    
+    if ad_pos < new_noun_index_a:
+        print("and adjectives come before nouns.")
+    elif prep_pos > new_noun_index_a:
+        print("and adjectives come after nouns.")
+    else:
+        print("AN/NA couldn't be determined with the data currently available.")
 
 # Subject changes in 0,1
 # Verb changes in 1,2
@@ -145,4 +165,4 @@ for h_st in HN_Sentences:
     HN_tokens.append(tokenize)
 
 # Now, send the tokenised form to 
-print_SVO_rules(HN_tokens)
+print_syntax_rules(HN_tokens)
