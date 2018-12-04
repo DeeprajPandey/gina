@@ -6,12 +6,13 @@ How? Fret not. She is going to guide you throughout.
 
 Gina uses Google Natural Language API for syntax analysis. She tries to extrapolate her reasoning from how she learned English to the new language (which could be completely imaginary, as long as you set and follow the basic rules of a language).
 
-### Setup
+## Setup
+---
 
-#### Authentication
+### Authentication
 Gina is still under development. You would need to setup credentials from your Google Cloud Platform to run the scripts.
 
-#### Install Dependencies
+### Install Dependencies
 1. Install [pip](https://pip.pypa.io) and [virtualenv](https://virtualenv.pypa.io/)
 
 2. Create a virtualenv and activate it
@@ -29,7 +30,7 @@ If you're on Windows, you may have to specify the full path to your python insta
 > $ pip install -r requirements.txt
 > ```
 
-#### Run
+### Run
 Gina will give you a paragraph to translate. Do this very literally, without taking any meaning away from the sentences and she will show the syntax rules for the language you are translating into.
 ```sh
   $ python generate_rules.py
