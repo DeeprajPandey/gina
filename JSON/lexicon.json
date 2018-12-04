@@ -1,25 +1,104 @@
 {
-    "nouns": {
-        "cat": ["billi", "F", "billi"]
-    },
-    "verbs": {
-        "eats": ["khata", "khaati", "Third Person"],
-        "walks": ["chalta", "chalti", "Third Person"]
-    },
-    "adjectives": {
-        "big": ["bada", "badi", "bade"],
-        "small": ["chhota", "chhoti", ""]
-    },
-    "adpositions": {
-        "on": "par", "in": "mein"
-    },
-    "pronouns": {
-        "I": "main",
-        "me": "mujhko",
-        "you": ["tu", "tujhko"],
-        "he": "voh",
-        "him": "usko",
-        "she": "voh",
-        "her": "usko"
-    }
+  "nouns": {
+    "cat": [
+      "billi",
+      "F",
+      "billi"
+    ],
+    "dog": [
+      "",
+      "U",
+      "kutte"
+    ],
+    "runs": [
+      "billi",
+      "F",
+      "billi"
+    ],
+    "stands": [
+      "billi",
+      "F",
+      "billi"
+    ],
+    "woman": [
+      "aurat",
+      "F",
+      "aurat"
+    ],
+    "girl": [
+      "ladki",
+      "F",
+      "ladki"
+    ],
+    "sky": [
+      "aasmaan",
+      "U",
+      "aasmaan"
+    ]
+  },
+  "verbs": {
+    "eats": [
+      "khata",
+      "khaati",
+      "Third Person"
+    ],
+    "walks": [
+      "chalta",
+      "chalti",
+      "Third Person"
+    ],
+    "sit": [
+      "",
+      "baithti",
+      "First, Second Person"
+    ],
+    "stands": [
+      "",
+      "khadihoti",
+      "Third Person"
+    ],
+    "flies": [
+      "",
+      "udti",
+      "Third Person"
+    ],
+    "sits": [
+      "",
+      "baithti",
+      "Third Person"
+    ]
+  },
+  "adjectives": {
+    "small": [
+      "chhota",
+      "chhoti",
+      ""
+    ],
+    "big": [
+      "bada",
+      "badi",
+      "bade"
+    ],
+    "black": [
+      "",
+      "ladki",
+      ""
+    ]
+  },
+  "adpositions": {
+    "on": "par",
+    "in": "mein"
+  },
+  "pronouns": {
+    "me": "mujhko",
+    "her": "usko",
+    "I": "main",
+    "she": "voh",
+    "you": [
+      "tu",
+      "tujhko"
+    ],
+    "him": "usko",
+    "he": "voh"
+  }
 }
