@@ -51,7 +51,24 @@ def jaro_winkler_distance(sherlock, watson, winkler):
     # If no characters match, m=0
     if not common_chars:
         return 0.0
- 
+
+    # Count transpositions
+    # Note: only check order of matched characters.
+    # For instance, DwAyNE and DuANE have 0 transpositions since the
+    # matching letters (range-wise as well) D,A,N,E are in same order.
+    k = trans_count = 0
+    for i, sherlock_f in enumerate(sherlock_flags):
+        if sherlock_f:
+            for j in range(k, watson_len):
+                if watson_flags[j]:
+                    k = j + 1
+                    break
+            # Means matching but at different positions
+            if sherlock[i] != watson[j]:
+                trans_count += 1
+    # We counted once for each character in sherlock.
+    # If transpositions exist, they're counted twice
+    trans_count /= 2
 
 def print_SVO_rules(HN_tokens):
     SVO = {}
