@@ -2,7 +2,7 @@
   "sentences": [
     {
       "text": {
-        "content": "The black woman stands",
+        "content": "the girls sits in the sky",
         "beginOffset": 0
       }
     }
@@ -10,7 +10,7 @@
   "tokens": [
     {
       "text": {
-        "content": "The",
+        "content": "the",
         "beginOffset": 0
       },
       "partOfSpeech": {
@@ -28,18 +28,68 @@
         "voice": "VOICE_UNKNOWN"
       },
       "dependencyEdge": {
-        "headTokenIndex": 2,
+        "headTokenIndex": 1,
         "label": "DET"
       },
-      "lemma": "The"
+      "lemma": "the"
     },
     {
       "text": {
-        "content": "black",
+        "content": "girls",
         "beginOffset": 4
       },
       "partOfSpeech": {
-        "tag": "ADJ",
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "PLURAL",
+        "person": "PERSON_UNKNOWN",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": {
+        "headTokenIndex": 2,
+        "label": "NSUBJ"
+      },
+      "lemma": "girl"
+    },
+    {
+      "text": {
+        "content": "sits",
+        "beginOffset": 10
+      },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "INDICATIVE",
+        "number": "SINGULAR",
+        "person": "THIRD",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "PRESENT",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": {
+        "headTokenIndex": 2,
+        "label": "ROOT"
+      },
+      "lemma": "sit"
+    },
+    {
+      "text": {
+        "content": "in",
+        "beginOffset": 15
+      },
+      "partOfSpeech": {
+        "tag": "ADP",
         "aspect": "ASPECT_UNKNOWN",
         "case": "CASE_UNKNOWN",
         "form": "FORM_UNKNOWN",
@@ -54,14 +104,39 @@
       },
       "dependencyEdge": {
         "headTokenIndex": 2,
-        "label": "AMOD"
+        "label": "PREP"
       },
-      "lemma": "black"
+      "lemma": "in"
     },
     {
       "text": {
-        "content": "woman",
-        "beginOffset": 10
+        "content": "the",
+        "beginOffset": 18
+      },
+      "partOfSpeech": {
+        "tag": "DET",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": {
+        "headTokenIndex": 5,
+        "label": "DET"
+      },
+      "lemma": "the"
+    },
+    {
+      "text": {
+        "content": "sky",
+        "beginOffset": 22
       },
       "partOfSpeech": {
         "tag": "NOUN",
@@ -79,34 +154,9 @@
       },
       "dependencyEdge": {
         "headTokenIndex": 3,
-        "label": "NSUBJ"
+        "label": "POBJ"
       },
-      "lemma": "woman"
-    },
-    {
-      "text": {
-        "content": "stands",
-        "beginOffset": 16
-      },
-      "partOfSpeech": {
-        "tag": "VERB",
-        "aspect": "ASPECT_UNKNOWN",
-        "case": "CASE_UNKNOWN",
-        "form": "FORM_UNKNOWN",
-        "gender": "GENDER_UNKNOWN",
-        "mood": "INDICATIVE",
-        "number": "SINGULAR",
-        "person": "THIRD",
-        "proper": "PROPER_UNKNOWN",
-        "reciprocity": "RECIPROCITY_UNKNOWN",
-        "tense": "PRESENT",
-        "voice": "VOICE_UNKNOWN"
-      },
-      "dependencyEdge": {
-        "headTokenIndex": 3,
-        "label": "ROOT"
-      },
-      "lemma": "stand"
+      "lemma": "sky"
     }
   ],
   "language": "en"
