@@ -16,6 +16,26 @@ def hamming_distance(str1, str2):
     return distance
 
 
+# sherlock and watson are the 2 strings we will be dealing with today
+def jaro_winkler_distance(sherlock, watson, winkler):
+    sherlock_len = len(sherlock)
+    watson_len = len(watson)
+
+    if not sherlock_len or not watson_len:
+        return 0.0
+    
+    # According to Jaro similarity, 2 characters are matching
+    # only if they are same and in the range defined below in `search_range`
+    min_len = max(sherlock_len, watson_len)
+    search_range = (min_len // 2) - 1
+    
+    # Array of flags corresponding to each character, which will toggle to True
+    # when they match b/w the strings
+    sherlock_flags = [False]*sherlock_len
+    watson_flags = [False]*watson_len
+
+
+
 def print_SVO_rules(HN_tokens):
     SVO = {}
     PN = {}
