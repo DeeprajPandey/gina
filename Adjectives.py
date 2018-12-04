@@ -47,20 +47,22 @@ for word in EST:
 	if((word[1]=='ADJ' and word[0] not in ADJ_Lexicon) or (word[1]=='ADJ' and word[0] in ADJ_Lexicon and (ADJ_Lexicon[word[0]][0]=='' or ADJ_Lexicon[word[0]][1]=='' or ADJ_Lexicon[word[0]][2]==''))): #UNKNOWN Adjective or known adjective with unknown parameters
 		search_index = index +1
 		updated = False
+		Cannot_be_learned=True
+		if(word[0] in ADJ_Lexicon):
+			Saved_Male_Inflection = ADJ_Lexicon[word[0]][0]
+			Saved_Female_Inflection = ADJ_Lexicon[word[0]][1]
+			Saved_Accusative_Inflection = ADJ_Lexicon[word[0]][2]
+		else:
+			Saved_Male_Inflection=''
+			Saved_Female_Inflection=''
+			Saved_Accusative_Inflection=''
 		while(search_index < EST_size and updated==False):
 			#print(word[0])
-			if(word[0] in ADJ_Lexicon):
-				Saved_Male_Inflection = ADJ_Lexicon[word[0]][0]
-				Saved_Female_Inflection = ADJ_Lexicon[word[0]][1]
-				Saved_Accusative_Inflection = ADJ_Lexicon[word[0]][2]
-			else:
-				Saved_Male_Inflection=''
-				Saved_Female_Inflection=''
-				Saved_Accusative_Inflection=''
+			
 			Current_word=EST[search_index][0]
 			#print(Current_word)
 			Current_word_tag = EST[search_index][1]
-			if(Current_word_tag=='NOUN' and Current_word in Noun_Lexicon):
+			if(Current_word_tag=='NOUN' and Current_word in Noun_Lexicon and Cannot_be_learned==True):
 				Hindi_Nom = Noun_Lexicon[Current_word][0] #nominative_inflection: bada kutta
 				Hindi_Acc = Noun_Lexicon[Current_word][2] #accusative_inflection: bade kutte ko
 				Hindi_G = Noun_Lexicon[Current_word][1] #accusative_inflection
@@ -116,7 +118,60 @@ for word in EST:
 							if(CASE=='ACC'):
 								ADJ_Lexicon.update({word[0]: [Saved_Male_Inflection, Saved_Female_Inflection, H_ADJ]})
 								updated=True
+			if(Current_word_tag=='NOUN' and Current_word not in Noun_Lexicon):
+				Cannot_be_learned=True #if we do not know the noun right after adjective, we cannot learn this adjective from other nouns! Must abort
 			search_index = search_index +1
+		if(updated == False):
+			if(EST[index-1][0]=='is' or EST[index-1][0]=='turns' or EST[index-1][0]=='becomes' or EST[index-1][0]=='am' ):
+				E_noun = EST[index-2][0]; #e.g. in 'the sky is blue'
+				if(E_noun in Noun_Lexicon and Noun_Lexicon[E_noun][0] != ''):
+					H_noun = Noun_Lexicon[E_noun][0]
+					#print(H_noun)
+					#print(HST)
+					if(H_noun not in HST):
+						break
+					HN_index = HST.index(H_noun)
+					G=Noun_Lexicon[E_noun][1]
+					HA_index=HN_index+1;
+					H_ADJ=HST[HA_index];
+					if(G=='F'):
+						if(not H_ADJ.endswith('ee') and not H_ADJ.endswith('i')):
+							ADJ_Lexicon.update({word[0]: [H_ADJ, H_ADJ, H_ADJ]}) #all inflections same for adjectives like 'drudh' or 'sundar'
+						else:
+							ADJ_Lexicon.update({word[0]: [Saved_Male_Inflection, H_ADJ, Saved_Accusative_Inflection]}) #nominative, accusative same for female
+						updated = True
+					if(G=='M'):
+						if(not H_ADJ.endswith('e') and not H_ADJ.endswith('a')):
+							ADJ_Lexicon.update({word[0]: [H_ADJ, H_ADJ, H_ADJ]}) #nominative, accusative same for male nouns not ending in 'a', same as female!
+							updated = True
+						else:
+							ADJ_Lexicon.update({word[0]: [H_ADJ, Saved_Female_Inflection, Saved_Accusative_Inflection]}) #nominative, accusative same for female
+							updated=True
+					if(G=='U'):
+						if(H_ADJ.endswith('a')):
+							ADJ_Lexicon.update({word[0]: [H_ADJ, Saved_Female_Inflection, Saved_Accusative_Inflection]}) #nominative, accusative same for female
+							updated=True
+						if(H_ADJ.endswith('i') or H_ADJ.endswith('ee')):
+							ADJ_Lexicon.update({word[0]: [Saved_Male_Inflection, H_ADJ, Saved_Accusative_Inflection]}) #nominative, accusative same for female
+							updated=True
+				if(E_noun in Pronoun_Lexicon):
+					if(E_noun!='you'):
+						H_noun = Pronoun_Lexicon[E_noun]
+					else:
+						H_noun = Pronoun_Lexicon[E_noun][0]
+					if(H_noun not in HST):
+						break
+					HN_index = HST.index(H_noun)
+					HA_index=HN_index+1;
+					H_ADJ=HST[HA_index];
+					if(H_ADJ.endswith('a')):
+						ADJ_Lexicon.update({word[0]: [H_ADJ, Saved_Female_Inflection, Saved_Accusative_Inflection]}) #nominative, accusative same for female
+						updated=True
+					if(H_ADJ.endswith('i') or H_ADJ.endswith('ee')):
+						ADJ_Lexicon.update({word[0]: [Saved_Male_Inflection, H_ADJ, Saved_Accusative_Inflection]}) #nominative, accusative same for female
+						updated=True
+		
+
 # Load the updated lexicon to the file
 updated_lex = {
     "nouns": Noun_Lexicon,

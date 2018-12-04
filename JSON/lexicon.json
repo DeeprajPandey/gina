@@ -15,11 +15,6 @@
       "F",
       "billi"
     ],
-    "stands": [
-      "billi",
-      "F",
-      "billi"
-    ],
     "woman": [
       "aurat",
       "F",
@@ -34,6 +29,41 @@
       "aasmaan",
       "U",
       "aasmaan"
+    ],
+    "table": [
+      "table",
+      "U",
+      "table"
+    ],
+    "boy": [
+      "ladka",
+      "M",
+      ""
+    ],
+    "Reuel": [
+      "Reuel",
+      "M",
+      "Reuel"
+    ],
+    "book": [
+      "kitaab",
+      "F",
+      "kitaab"
+    ],
+    "part": [
+      "hissa",
+      "U",
+      ""
+    ],
+    "bird": [
+      "",
+      "U",
+      "chidiya"
+    ],
+    "plane": [
+      "jahaaz",
+      "U",
+      "jahaaz"
     ]
   },
   "verbs": {
@@ -66,6 +96,41 @@
       "",
       "baithti",
       "Third Person"
+    ],
+    "is": [
+      "hai",
+      "hai",
+      "Third Person"
+    ],
+    "like": [
+      "",
+      "pasandkarti",
+      "First, Second Person"
+    ],
+    "writes": [
+      "likhta",
+      "likhti",
+      "Third Person"
+    ],
+    "reads": [
+      "",
+      "padhti",
+      "Third Person"
+    ],
+    "read": [
+      "padhta",
+      "",
+      "First, Second Person"
+    ],
+    "hits": [
+      "maarta",
+      "",
+      "Third Person"
+    ],
+    "see": [
+      "",
+      "dekhti",
+      "First, Second Person"
     ]
   },
   "adjectives": {
@@ -81,13 +146,39 @@
     ],
     "black": [
       "",
-      "ladki",
+      "kaali",
+      ""
+    ],
+    "blue": [
+      "",
+      "neeli",
+      ""
+    ],
+    "yellow": [
+      "peela",
+      "",
+      ""
+    ],
+    "green": [
+      "",
+      "hari",
+      ""
+    ],
+    "bored": [
+      "",
+      "lukhi",
+      ""
+    ],
+    "good": [
+      "",
+      "acchi",
       ""
     ]
   },
   "adpositions": {
     "on": "par",
-    "in": "mein"
+    "in": "mein",
+    "under": "neeche"
   },
   "pronouns": {
     "me": "mujhko",
