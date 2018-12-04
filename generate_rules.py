@@ -66,9 +66,16 @@ def jaro_winkler_distance(sherlock, watson, winkler):
             # Means matching but at different positions
             if sherlock[i] != watson[j]:
                 trans_count += 1
-    # We counted once for each character in sherlock.
-    # If transpositions exist, they're counted twice
-    trans_count /= 2
+    	# We counted once for each character in sherlock.
+    	# If transpositions exist, they're counted twice
+	    trans_count /= 2
+
+	    # Adjust for similarities in nonmatched characters
+	    common_chars = float(common_chars)
+	    # Jaro Distance
+	    weight = ((common_chars/sherlock_len + common_chars/watson_len +
+	              (common_chars-trans_count) / common_chars)) / 3
+
 
 def print_SVO_rules(HN_tokens):
     SVO = {}
