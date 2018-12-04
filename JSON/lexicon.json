@@ -24,6 +24,16 @@
       "aurat",
       "F",
       "aurat"
+    ],
+    "girl": [
+      "ladki",
+      "F",
+      "ladki"
+    ],
+    "sky": [
+      "aasmaan",
+      "U",
+      "aasmaan"
     ]
   },
   "verbs": {
@@ -46,6 +56,16 @@
       "",
       "khadihoti",
       "Third Person"
+    ],
+    "flies": [
+      "",
+      "udti",
+      "Third Person"
+    ],
+    "sits": [
+      "",
+      "baithti",
+      "Third Person"
     ]
   },
   "adjectives": {
@@ -61,7 +81,7 @@
     ],
     "black": [
       "",
-      "kaali",
+      "ladki",
       ""
     ]
   },

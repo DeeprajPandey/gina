@@ -145,7 +145,7 @@ for word in EST:
 						Current_word_h = Hindi_word
 						found = True		#Since English is SVO, if we move backwards from the noun, the noun: O.	It is also possible that the verb is present in her lexicon but not the right inflection of it, in which she will not learn anything
 				token = [Current_word, Current_word_tag]
-				EST_index = EST.index(token) #only one instance
+				EST_index = search_index
 				AD_absent=True
 				while(EST[EST_index][0] != word[0]):
 					if(EST[EST_index][1] == 'ADP'):
@@ -163,7 +163,7 @@ for word in EST:
 						Noun_Lexicon.update({word[0]: [H_noun, Saved_Gender, Saved_Accusative_Inflection]})
 						updated = True
 						#'ko' not used, not marked for accusative case
-					if(not H_noun.endswith('e') and not H_noun.endswith('a')):
+					if(Saved_Gender == 'F' or (not H_noun.endswith('e') and not H_noun.endswith('a'))):
 						Noun_Lexicon.update({word[0]: [H_noun, Saved_Gender, H_noun]}) #nominative, accusative same for male nouns not ending in 'a'
 					#The verb inflects for subject not object, so Gina cannot figure out the gender of H_noun
 						updated = True
@@ -179,10 +179,10 @@ for word in EST:
 						found = True		#Since English is SVO, if we move backwards from the noun, the noun: O.	It is also possible that the verb is present in her lexicon but not the right inflection of it, in which she will not learn anything
 				#Checking for presence of confounding adjectives attaching to object noun, which will come between S and O
 				token = [Current_word, Current_word_tag]
-				EST_index = EST.index(token) #only one instance
+				EST_index =search_index #only one instance
 				#print(EST[EST_index][0])
 				#print(word[0])
-				AD_absent=True
+				AD_absent=True #FIX THIS
 				while(EST[EST_index][0] != word[0]):
 					if(EST[EST_index][1] == 'ADJ' or EST[EST_index][1] == 'ADP'):
 						AD_absent= False
@@ -190,6 +190,8 @@ for word in EST:
 				if(found and AD_absent):
 					HST_index = HST.index(Current_word_h) #only one instance
 					HST_index= HST_index+1#Next word in Hindi, since Hindi: SOV, always feasible because subject will not be last word of sentence
+					if(HST[HST_index] =='ek'): #skip article
+						HST_index= HST_index+1
 					H_noun = HST[HST_index] #object will immediately precede the verb, because confounding adjectives will come before the noun-object. There can be no confounding prepositions: 'The cat eats the rat on the table' is not allowed because it has a prepositional clause
 					#print(HST_index)
 					HST_index= HST_index+1
@@ -200,9 +202,10 @@ for word in EST:
 						Noun_Lexicon.update({word[0]: [H_noun, Saved_Gender, Saved_Accusative_Inflection]})
 						updated = True
 						 #'ko' not used, not marked for accusative case
-					if(not H_noun.endswith('e') and not H_noun.endswith('a')):
+					if(Saved_Gender=='F' or (not H_noun.endswith('e') and not H_noun.endswith('a'))):
 						Noun_Lexicon.update({word[0]: [H_noun, Saved_Gender, H_noun]}) #nominative, accusative same for male nouns not ending in 'a', all female nouns. Gender still unknown
 						updated = True
+					break
 			if(Current_word_tag=='PRON' and Current_word in Pronoun_Lexicon):
 				Hindi_SN = Pronoun_Lexicon[Current_word] #has to be nominative inflection: Hindi_SN: subject noun
 			#	print(Hindi_M)
@@ -228,6 +231,8 @@ for word in EST:
 				if(found and AD_absent):
 					HST_index = HST.index(Current_word_h) #only one instance
 					HST_index= HST_index+1#Next word in Hindi, since Hindi: SOV, always feasible because subject will not be last word of sentence
+					if(HST[HST_index] =='ek'): #skip article
+						HST_index= HST_index+1
 					H_noun = HST[HST_index] #object will immediately precede the verb, because confounding adjectives will come before the noun-object. There can be no confounding prepositions: 'The cat eats the rat on the table' is not allowed because it has a prepositional clause
 					HST_index= HST_index+1
 					if(HST[HST_index]=='ko'):
@@ -240,7 +245,7 @@ for word in EST:
 						updated = True
 			search_index=search_index-1 #decreement search_index to go leftwards
 		search_index = index +1
-		while(search_index < EST_size and (updated==False or (Noun_Lexicon[word[0]][0]=='' or Noun_Lexicon[word[0]][1]=='U' or Noun_Lexicon[word[0]][2]==''))): #Going leftwards:
+		while(search_index < EST_size and (updated==False or (Noun_Lexicon[word[0]][0]=='' or Noun_Lexicon[word[0]][1]=='U' or Noun_Lexicon[word[0]][2]==''))): #Going rightwards:
 			if(word[0] in Noun_Lexicon):
 				Saved_Nominative_Inflection = Noun_Lexicon[word[0]][0]
 				Saved_Gender = Noun_Lexicon[word[0]][1]
@@ -263,9 +268,9 @@ for word in EST:
 				for Hindi_word in HST:
 					if(Hindi_word == Hindi_F or Hindi_word == Hindi_M):
 						Current_word_h = Hindi_word
-						found = True		#Since English is SVO, if we move backwards from the noun, the noun: O.	It is also possible that the verb is present in her lexicon but not the right inflection of it, in which she will not learn anything
+						found = True		#Since English is SVO, if we move forwards from the noun, the noun: S.	It is also possible that the verb is present in her lexicon but not the right inflection of it, in which she will not learn anything
 				token = [Current_word, Current_word_tag]
-				EST_index = EST.index(token) #only one instance
+				EST_index = search_index #only one instance
 				AD_absent=True
 				Obj_exists=False
 				while((EST_index < EST_size) and (EST[EST_index][1] != 'NOUN' and EST[EST_index][1] != 'PRON')): #until we reach the object if it exists
@@ -284,16 +289,16 @@ for word in EST:
 						HST_index= HST_index-1 #We have reached the object in Hindi SOV
 						if(HST[HST_index] == 'ko'):
 							HST_index= HST_index-1 #We have reached the object in Hindi SOV
-					HST_index= HST_index-1 #We have reached the subject in Hindi SOV, there were no confounding adjectives
+					HST_index= HST_index-1  #We have reached the subject in Hindi SOV, there were no confounding adjectives
+					if(HST[HST_index] =='ek'): #skip article
+						HST_index= HST_index-1
 					H_noun = HST[HST_index]
 					Noun_Lexicon.update({word[0]: [H_noun, G, Saved_Accusative_Inflection]}) #'ko' not used, not marked for accusative case
 					updated = True
-					if(G=='F'):
-						Noun_Lexicon.update({word[0]: [H_noun, G, H_noun]}) #nominative, accusative same for female nouns
+					if(G=='F' or (not H_noun.endswith('e') and not H_noun.endswith('a'))):
+						Noun_Lexicon.update({word[0]: [H_noun, G, H_noun]}) #nominative, accusative same for male nouns not ending in 'a'; nominative, accusative same for female nouns
 						updated = True
-					if(not H_noun.endswith('e') and not H_noun.endswith('a')):
-						Noun_Lexicon.update({word[0]: [H_noun, G, H_noun]}) #nominative, accusative same for male nouns not ending in 'a'
-						updated = True
+						
 			if(Current_word_tag=='NOUN' and Current_word in Noun_Lexicon):
 				Hindi_ON = Noun_Lexicon[Current_word][2] #has to be accusative inflection: Hindi_ON: subject noun
 			#	print(Hindi_M)
@@ -306,7 +311,7 @@ for word in EST:
 						found = True		#Since English is SVO, if we move backwards from the noun, the noun: O.	It is also possible that the verb is present in her lexicon but not the right inflection of it, in which she will not learn anything
 				#Checking for presence of confounding adjectives attaching to object noun, which will come between S and O
 				token = [Current_word, Current_word_tag]
-				EST_index = EST.index(token) #only one instance
+				EST_index = search_index #only one instance
 				#print(EST[EST_index][0])
 				#print(word[0])
 				AD_absent=True
@@ -316,11 +321,13 @@ for word in EST:
 					EST_index= EST_index-1
 				if(found and AD_absent):
 					HST_index = HST.index(Current_word_h) #only one instance
-					HST_index= HST_index-1#Next word in Hindi, since Hindi: SOV, always feasible because subject will not be last word of sentence
+					HST_index= HST_index-1#Prev word in Hindi, since Hindi: SOV, always feasible because object will not be first word of sentence
+					if(HST[HST_index] =='ek'): #skip article
+						HST_index= HST_index-1
 					H_noun = HST[HST_index] #object will immediately precede the verb, because confounding adjectives will come before the noun-object. There can be no confounding prepositions: 'The cat eats the rat on the table' is not allowed because it has a prepositional clause
 					Noun_Lexicon.update({word[0]: [H_noun, Saved_Gender, Saved_Accusative_Inflection]}) #'ko' not used, not marked for accusative case
 					updated = True
-					if(not H_noun.endswith('e') and not H_noun.endswith('a')):
+					if(Saved_Gender=='F' or (not H_noun.endswith('e') and not H_noun.endswith('a'))):
 						Noun_Lexicon.update({word[0]: [H_noun, Saved_Gender, H_noun]}) #nominative, accusative same for male nouns not ending in 'a', all female nouns. Gender still unknown
 						updated = True
 			if(Current_word_tag=='PRON' and Current_word in Pronoun_Lexicon): #pronouns in accusative inflection
@@ -348,10 +355,12 @@ for word in EST:
 				if(found and AD_absent):
 					HST_index = HST.index(Current_word_h)
 					HST_index= HST_index - 1 #Previous word in Hindi, since Hindi: SOV, always feasible because subject will not be last word of sentence
-					H_noun = HST[HST_index] #object will immediately precede the verb, because confounding adjectives will come before the noun-object. There can be no confounding prepositions: 'The cat eats the rat on the table' is not allowed because it has a prepositional clause
+					if(HST[HST_index] =='ek'): #skip article
+						HST_index= HST_index-1
+						H_noun = HST[HST_index] #object will immediately precede the verb, because confounding adjectives will come before the noun-object. There can be no confounding prepositions: 'The cat eats the rat on the table' is not allowed because it has a prepositional clause
 					Noun_Lexicon.update({word[0]: [H_noun, Saved_Gender, Saved_Accusative_Inflection]}) #'ko' not used, not marked for accusative case
 					updated = True
-					if(not H_noun.endswith('e') and not H_noun.endswith('a')):
+					if(Saved_Gender=='F' or (not H_noun.endswith('e') and not H_noun.endswith('a'))):
 						Noun_Lexicon.update({word[0]: [H_noun, Saved_Gender, H_noun]}) #nominative, accusative same for male nouns not ending in 'a', all female nouns. Gender still unknown
 						updated = True
 			search_index=search_index+1 #decreement search_index to go leftwards
