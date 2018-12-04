@@ -16,7 +16,7 @@ def hamming_distance(s1, s2):
     return distance
 
 # sherlock and watson are the 2 strings we will be dealing with today
-def jaro_winkler_distance(sherlock, watson, winkler):
+def jaro_winkler_distance(sherlock, watson):
     sherlock_len = len(sherlock)
     watson_len = len(watson)
 
@@ -113,7 +113,7 @@ def print_SVO_rules(HN_tokens):
     noun = HN_tokens[0][object_pos]
     
     for word in HN_tokens[1]:
-        if jaro_winkler_distance(noun, word, true) >= 0.9 and hamming_distance(noun, word) <= 1:
+        if jaro_winkler_distance(noun, word) >= 0.9 and hamming_distance(noun, word) <= 1:
             # The noun must have changed it's position as preposition might come with morphemes
             new_noun_index = np.where(word == HN_tokens[1])[0][0]
     
