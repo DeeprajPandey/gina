@@ -34,7 +34,24 @@ def jaro_winkler_distance(sherlock, watson, winkler):
     sherlock_flags = [False]*sherlock_len
     watson_flags = [False]*watson_len
 
+    # While searching only within the search_range, count & flag matched pairs
+    common_chars = 0
+    for i, sherlock_ch in enumerate(sherlock):
+        low = i - search_range if i > search_range else 0
+        hi = i + search_range if i + search_range < watson_len else watson_len - 1
+        for j in range(low, hi+1):
+            # if flag has been toggled to True, we continue
+            if not watson_flags[j] and watson[j] == sherlock_ch:
+                sherlock_flags[i] = watson_flags[j] = True
+                common_chars += 1
+                # If a common character is found, again
+                # compare the next character in sherlock with the range in watson
+                break
 
+    # If no characters match, m=0
+    if not common_chars:
+        return 0.0
+ 
 
 def print_SVO_rules(HN_tokens):
     SVO = {}
