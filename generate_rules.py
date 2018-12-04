@@ -107,6 +107,7 @@ def print_syntax_rules(HN_tokens):
     SVO[sub_pos] = 'Subject'
     SVO[verb_pos] = 'Verb'
     SVO[object_pos] = 'Object'
+    
     print("\nIn your language, SVO order is", end = ' ')
     for key in sorted(SVO.keys()):
         print('%s' % SVO[key], end = ', ')
@@ -151,9 +152,11 @@ def print_syntax_rules(HN_tokens):
     else:
         print("AN/NA couldn't be determined with the data currently available.")
 
-# Subject changes in 0,1
-# Verb changes in 1,2
-# Object changes in 2,3
+# Subject changes in 0,4 (use noun from 4 for AN)
+# Verb changes in 0,7
+# Object changes in 0,5 (use noun from 0 for PN)
+# Preposition changes in 1,3
+# Adjective changes in 2,6
 EN_Sentences = ["The girl eats the banana.", "The fly is near the banana.", "The small fly.", "The fly is on top of the banana.", "The fly eats the banana.", "The girl eats the fly.", "The sad fly.", "The girl throws the banana.", "The sad girl."]
 #HN_Sentences = ["Ladki ne kela khaya.", "Makhi kele ke paas hai", "Chhoti makhi.", "Makhi kele ke upar hai.", "Makhi ne kela khaya.", "Ladki ne makhi khaya.", "Dukhi makhi.", "Ladki ne kela feka.", "Dukhi ladki."]
 HN_Sentences = []
@@ -161,17 +164,17 @@ HN_tokens = []
 # Regex to strip input of punctuation
 regex = re.compile('[%s]' % re.escape(string.punctuation))
 
-# Get the user translated inputs
+# Get the user translated inputs if the program is run explicitly
 if __name__ == '__main__':
     for sentence in EN_Sentences:
         print("Sentence in English: " + sentence)
         h_input = input("Enter translation in your language: ")
         HN_Sentences.append(h_input)
 
-# Tokenise the inputs. HN_tokens = [['hello','world']['sentence','two']]
-for h_st in HN_Sentences:
-    tokenize = np.array(regex.sub('', h_st).split())
-    HN_tokens.append(tokenize)
+	# Tokenise the inputs. HN_tokens = [['hello','world']['sentence','two']]
+	for h_st in HN_Sentences:
+    	tokenize = np.array(regex.sub('', h_st).split())
+	    HN_tokens.append(tokenize)
 
-# Now, send the tokenised form to 
-print_syntax_rules(HN_tokens)
+	# Now, send the tokenised form to 
+	print_syntax_rules(HN_tokens)
