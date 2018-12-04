@@ -2,7 +2,7 @@
   "sentences": [
     {
       "text": {
-        "content": "I see a plane",
+        "content": "life is unending",
         "beginOffset": 0
       }
     }
@@ -10,83 +10,8 @@
   "tokens": [
     {
       "text": {
-        "content": "I",
+        "content": "life",
         "beginOffset": 0
-      },
-      "partOfSpeech": {
-        "tag": "PRON",
-        "aspect": "ASPECT_UNKNOWN",
-        "case": "NOMINATIVE",
-        "form": "FORM_UNKNOWN",
-        "gender": "GENDER_UNKNOWN",
-        "mood": "MOOD_UNKNOWN",
-        "number": "SINGULAR",
-        "person": "FIRST",
-        "proper": "PROPER_UNKNOWN",
-        "reciprocity": "RECIPROCITY_UNKNOWN",
-        "tense": "TENSE_UNKNOWN",
-        "voice": "VOICE_UNKNOWN"
-      },
-      "dependencyEdge": {
-        "headTokenIndex": 1,
-        "label": "NSUBJ"
-      },
-      "lemma": "I"
-    },
-    {
-      "text": {
-        "content": "see",
-        "beginOffset": 2
-      },
-      "partOfSpeech": {
-        "tag": "VERB",
-        "aspect": "ASPECT_UNKNOWN",
-        "case": "CASE_UNKNOWN",
-        "form": "FORM_UNKNOWN",
-        "gender": "GENDER_UNKNOWN",
-        "mood": "INDICATIVE",
-        "number": "NUMBER_UNKNOWN",
-        "person": "PERSON_UNKNOWN",
-        "proper": "PROPER_UNKNOWN",
-        "reciprocity": "RECIPROCITY_UNKNOWN",
-        "tense": "PRESENT",
-        "voice": "VOICE_UNKNOWN"
-      },
-      "dependencyEdge": {
-        "headTokenIndex": 1,
-        "label": "ROOT"
-      },
-      "lemma": "see"
-    },
-    {
-      "text": {
-        "content": "a",
-        "beginOffset": 6
-      },
-      "partOfSpeech": {
-        "tag": "DET",
-        "aspect": "ASPECT_UNKNOWN",
-        "case": "CASE_UNKNOWN",
-        "form": "FORM_UNKNOWN",
-        "gender": "GENDER_UNKNOWN",
-        "mood": "MOOD_UNKNOWN",
-        "number": "NUMBER_UNKNOWN",
-        "person": "PERSON_UNKNOWN",
-        "proper": "PROPER_UNKNOWN",
-        "reciprocity": "RECIPROCITY_UNKNOWN",
-        "tense": "TENSE_UNKNOWN",
-        "voice": "VOICE_UNKNOWN"
-      },
-      "dependencyEdge": {
-        "headTokenIndex": 3,
-        "label": "DET"
-      },
-      "lemma": "a"
-    },
-    {
-      "text": {
-        "content": "plane",
-        "beginOffset": 8
       },
       "partOfSpeech": {
         "tag": "NOUN",
@@ -104,9 +29,59 @@
       },
       "dependencyEdge": {
         "headTokenIndex": 1,
-        "label": "DOBJ"
+        "label": "NSUBJ"
       },
-      "lemma": "plane"
+      "lemma": "life"
+    },
+    {
+      "text": {
+        "content": "is",
+        "beginOffset": 5
+      },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "INDICATIVE",
+        "number": "SINGULAR",
+        "person": "THIRD",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "PRESENT",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": {
+        "headTokenIndex": 1,
+        "label": "ROOT"
+      },
+      "lemma": "be"
+    },
+    {
+      "text": {
+        "content": "unending",
+        "beginOffset": 8
+      },
+      "partOfSpeech": {
+        "tag": "ADJ",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": {
+        "headTokenIndex": 1,
+        "label": "ACOMP"
+      },
+      "lemma": "unending"
     }
   ],
   "language": "en"

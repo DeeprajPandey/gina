@@ -170,6 +170,10 @@ for word in EST:
 					if(H_ADJ.endswith('i') or H_ADJ.endswith('ee')):
 						ADJ_Lexicon.update({word[0]: [Saved_Male_Inflection, H_ADJ, Saved_Accusative_Inflection]}) #nominative, accusative same for female
 						updated=True
+					if(updated==False)
+						ADJ_Lexicon.update({word[0]: [H_ADJ, H_ADJ, H_ADJ]}) #nominative, accusative same for female
+						updated=True
+					
 		
 
 # Load the updated lexicon to the file

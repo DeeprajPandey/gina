@@ -64,6 +64,21 @@
       "jahaaz",
       "U",
       "jahaaz"
+    ],
+    "eats": [
+      "billi",
+      "F",
+      "billi"
+    ],
+    "pink": [
+      "gulaabi",
+      "U",
+      "gulaabi"
+    ],
+    "life": [
+      "zindagi",
+      "F",
+      "zindagi"
     ]
   },
   "verbs": {
@@ -173,6 +188,26 @@
       "",
       "acchi",
       ""
+    ],
+    "fat": [
+      "",
+      "moti",
+      ""
+    ],
+    "lovely": [
+      "khoobsurat",
+      "khoobsurat",
+      "khoobsurat"
+    ],
+    "lazy": [
+      "",
+      "aalsi",
+      ""
+    ],
+    "unending": [
+      "anant",
+      "anant",
+      "anant"
     ]
   },
   "adpositions": {
