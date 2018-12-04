@@ -88,7 +88,7 @@ def jaro_winkler_distance(sherlock, watson, winkler):
             i += 1
         if i:
             # The scaling factor, p, is usually 0.1
-            weight += i * 0.1 * (1.0 - weight)
+            weight += i * 0.15 * (1.0 - weight)
 
     return weight
 
@@ -113,7 +113,7 @@ def print_SVO_rules(HN_tokens):
     noun = HN_tokens[0][object_pos]
     
     for word in HN_tokens[1]:
-        if jaro_winkler_distance(noun, word, true) >= 0.883 and hamming_distance(noun, word) <= 1:
+        if jaro_winkler_distance(noun, word, true) >= 0.9 and hamming_distance(noun, word) <= 1:
             # The noun must have changed it's position as preposition might come with morphemes
             new_noun_index = np.where(word == HN_tokens[1])[0][0]
     
