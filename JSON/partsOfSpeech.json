@@ -2,7 +2,7 @@
   "sentences": [
     {
       "text": {
-        "content": "the girls sits in the sky",
+        "content": "I see a plane",
         "beginOffset": 0
       }
     }
@@ -10,18 +10,18 @@
   "tokens": [
     {
       "text": {
-        "content": "the",
+        "content": "I",
         "beginOffset": 0
       },
       "partOfSpeech": {
-        "tag": "DET",
+        "tag": "PRON",
         "aspect": "ASPECT_UNKNOWN",
-        "case": "CASE_UNKNOWN",
+        "case": "NOMINATIVE",
         "form": "FORM_UNKNOWN",
         "gender": "GENDER_UNKNOWN",
         "mood": "MOOD_UNKNOWN",
-        "number": "NUMBER_UNKNOWN",
-        "person": "PERSON_UNKNOWN",
+        "number": "SINGULAR",
+        "person": "FIRST",
         "proper": "PROPER_UNKNOWN",
         "reciprocity": "RECIPROCITY_UNKNOWN",
         "tense": "TENSE_UNKNOWN",
@@ -29,39 +29,14 @@
       },
       "dependencyEdge": {
         "headTokenIndex": 1,
-        "label": "DET"
-      },
-      "lemma": "the"
-    },
-    {
-      "text": {
-        "content": "girls",
-        "beginOffset": 4
-      },
-      "partOfSpeech": {
-        "tag": "NOUN",
-        "aspect": "ASPECT_UNKNOWN",
-        "case": "CASE_UNKNOWN",
-        "form": "FORM_UNKNOWN",
-        "gender": "GENDER_UNKNOWN",
-        "mood": "MOOD_UNKNOWN",
-        "number": "PLURAL",
-        "person": "PERSON_UNKNOWN",
-        "proper": "PROPER_UNKNOWN",
-        "reciprocity": "RECIPROCITY_UNKNOWN",
-        "tense": "TENSE_UNKNOWN",
-        "voice": "VOICE_UNKNOWN"
-      },
-      "dependencyEdge": {
-        "headTokenIndex": 2,
         "label": "NSUBJ"
       },
-      "lemma": "girl"
+      "lemma": "I"
     },
     {
       "text": {
-        "content": "sits",
-        "beginOffset": 10
+        "content": "see",
+        "beginOffset": 2
       },
       "partOfSpeech": {
         "tag": "VERB",
@@ -70,48 +45,23 @@
         "form": "FORM_UNKNOWN",
         "gender": "GENDER_UNKNOWN",
         "mood": "INDICATIVE",
-        "number": "SINGULAR",
-        "person": "THIRD",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
         "proper": "PROPER_UNKNOWN",
         "reciprocity": "RECIPROCITY_UNKNOWN",
         "tense": "PRESENT",
         "voice": "VOICE_UNKNOWN"
       },
       "dependencyEdge": {
-        "headTokenIndex": 2,
+        "headTokenIndex": 1,
         "label": "ROOT"
       },
-      "lemma": "sit"
+      "lemma": "see"
     },
     {
       "text": {
-        "content": "in",
-        "beginOffset": 15
-      },
-      "partOfSpeech": {
-        "tag": "ADP",
-        "aspect": "ASPECT_UNKNOWN",
-        "case": "CASE_UNKNOWN",
-        "form": "FORM_UNKNOWN",
-        "gender": "GENDER_UNKNOWN",
-        "mood": "MOOD_UNKNOWN",
-        "number": "NUMBER_UNKNOWN",
-        "person": "PERSON_UNKNOWN",
-        "proper": "PROPER_UNKNOWN",
-        "reciprocity": "RECIPROCITY_UNKNOWN",
-        "tense": "TENSE_UNKNOWN",
-        "voice": "VOICE_UNKNOWN"
-      },
-      "dependencyEdge": {
-        "headTokenIndex": 2,
-        "label": "PREP"
-      },
-      "lemma": "in"
-    },
-    {
-      "text": {
-        "content": "the",
-        "beginOffset": 18
+        "content": "a",
+        "beginOffset": 6
       },
       "partOfSpeech": {
         "tag": "DET",
@@ -128,15 +78,15 @@
         "voice": "VOICE_UNKNOWN"
       },
       "dependencyEdge": {
-        "headTokenIndex": 5,
+        "headTokenIndex": 3,
         "label": "DET"
       },
-      "lemma": "the"
+      "lemma": "a"
     },
     {
       "text": {
-        "content": "sky",
-        "beginOffset": 22
+        "content": "plane",
+        "beginOffset": 8
       },
       "partOfSpeech": {
         "tag": "NOUN",
@@ -153,10 +103,10 @@
         "voice": "VOICE_UNKNOWN"
       },
       "dependencyEdge": {
-        "headTokenIndex": 3,
-        "label": "POBJ"
+        "headTokenIndex": 1,
+        "label": "DOBJ"
       },
-      "lemma": "sky"
+      "lemma": "plane"
     }
   ],
   "language": "en"
