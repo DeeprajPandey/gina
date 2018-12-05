@@ -2,7 +2,7 @@
   "sentences": [
     {
       "text": {
-        "content": "life is unending",
+        "content": "He gives me the bed",
         "beginOffset": 0
       }
     }
@@ -10,18 +10,18 @@
   "tokens": [
     {
       "text": {
-        "content": "life",
+        "content": "He",
         "beginOffset": 0
       },
       "partOfSpeech": {
-        "tag": "NOUN",
+        "tag": "PRON",
         "aspect": "ASPECT_UNKNOWN",
-        "case": "CASE_UNKNOWN",
+        "case": "NOMINATIVE",
         "form": "FORM_UNKNOWN",
-        "gender": "GENDER_UNKNOWN",
+        "gender": "MASCULINE",
         "mood": "MOOD_UNKNOWN",
         "number": "SINGULAR",
-        "person": "PERSON_UNKNOWN",
+        "person": "THIRD",
         "proper": "PROPER_UNKNOWN",
         "reciprocity": "RECIPROCITY_UNKNOWN",
         "tense": "TENSE_UNKNOWN",
@@ -31,12 +31,12 @@
         "headTokenIndex": 1,
         "label": "NSUBJ"
       },
-      "lemma": "life"
+      "lemma": "He"
     },
     {
       "text": {
-        "content": "is",
-        "beginOffset": 5
+        "content": "gives",
+        "beginOffset": 3
       },
       "partOfSpeech": {
         "tag": "VERB",
@@ -56,15 +56,40 @@
         "headTokenIndex": 1,
         "label": "ROOT"
       },
-      "lemma": "be"
+      "lemma": "give"
     },
     {
       "text": {
-        "content": "unending",
-        "beginOffset": 8
+        "content": "me",
+        "beginOffset": 9
       },
       "partOfSpeech": {
-        "tag": "ADJ",
+        "tag": "PRON",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "ACCUSATIVE",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "SINGULAR",
+        "person": "FIRST",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": {
+        "headTokenIndex": 1,
+        "label": "IOBJ"
+      },
+      "lemma": "me"
+    },
+    {
+      "text": {
+        "content": "the",
+        "beginOffset": 12
+      },
+      "partOfSpeech": {
+        "tag": "DET",
         "aspect": "ASPECT_UNKNOWN",
         "case": "CASE_UNKNOWN",
         "form": "FORM_UNKNOWN",
@@ -78,10 +103,35 @@
         "voice": "VOICE_UNKNOWN"
       },
       "dependencyEdge": {
-        "headTokenIndex": 1,
-        "label": "ACOMP"
+        "headTokenIndex": 4,
+        "label": "DET"
       },
-      "lemma": "unending"
+      "lemma": "the"
+    },
+    {
+      "text": {
+        "content": "bed",
+        "beginOffset": 16
+      },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "SINGULAR",
+        "person": "PERSON_UNKNOWN",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": {
+        "headTokenIndex": 1,
+        "label": "DOBJ"
+      },
+      "lemma": "bed"
     }
   ],
   "language": "en"

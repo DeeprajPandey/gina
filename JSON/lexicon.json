@@ -79,11 +79,41 @@
       "zindagi",
       "F",
       "zindagi"
+    ],
+    "chair": [
+      "kursi",
+      "U",
+      "kursi"
+    ],
+    "teacher": [
+      "shikshika",
+      "F",
+      "shikshika"
+    ],
+    "water": [
+      "paani",
+      "U",
+      "paani"
+    ],
+    "tea": [
+      "chai",
+      "U",
+      "chai"
+    ],
+    "flows": [
+      "paani",
+      "U",
+      "paani"
+    ],
+    "bed": [
+      "bistar",
+      "U",
+      "bistar"
     ]
   },
   "verbs": {
     "eats": [
-      "khata",
+      "khaata",
       "khaati",
       "Third Person"
     ],
@@ -103,7 +133,7 @@
       "Third Person"
     ],
     "flies": [
-      "",
+      "udta",
       "udti",
       "Third Person"
     ],
@@ -146,6 +176,31 @@
       "",
       "dekhti",
       "First, Second Person"
+    ],
+    "fly": [
+      "udta",
+      "",
+      "First, Second Person"
+    ],
+    "likes": [
+      "pasandkarta",
+      "",
+      "Third Person"
+    ],
+    "sleep": [
+      "",
+      "soti",
+      "First, Second Person"
+    ],
+    "sleeps": [
+      "sota",
+      "",
+      "Third Person"
+    ],
+    "gives": [
+      "deta",
+      "",
+      "Third Person"
     ]
   },
   "adjectives": {
@@ -180,7 +235,7 @@
       ""
     ],
     "bored": [
-      "",
+      "lukha",
       "lukhi",
       ""
     ],
@@ -208,6 +263,26 @@
       "anant",
       "anant",
       "anant"
+    ],
+    "long": [
+      "lamba",
+      "lambi",
+      ""
+    ],
+    "red": [
+      "laal",
+      "laal",
+      "laal"
+    ],
+    "wet": [
+      "geela",
+      "",
+      ""
+    ],
+    "white": [
+      "saphed",
+      "saphed",
+      "saphed"
     ]
   },
   "adpositions": {

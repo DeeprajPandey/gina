@@ -7,6 +7,7 @@ import json, sys
 #HST = [token]
 # Get the part of speech specific lexicon from the main JSON
 with open('JSON/lexicon.json', 'r') as fp:
+#Part II: Niyati
     lexicon_dict = json.loads(fp.read())
 #NOUNLEXICON: Englishkey : [nominative_inflection, grammatical_gender, accusative_inflection]
 Noun_Lexicon = lexicon_dict['nouns'] #G: M, F, U.
