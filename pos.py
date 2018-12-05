@@ -2,10 +2,15 @@
 
 """Musings with the Google Cloud Natural Language API syntax analysis"""
 
-import json
+import json, sys
 import googleapiclient.discovery
 
-text = 'The quick brown fox jumps over the lazy dog. The octopus was running a marathon with his friend, Ms. Cat. Interestingly, Mr. Octopus won the race.'
+text = ''#figured out a way to take a multi-word input from the command line and pass it to the python script
+t_index=0 #to keep track of the index of the program name so that it isn't taken into account as a string
+for x in sys.argv: #taking the text from the command line and storing into a variable
+    if(t_index != 0): #this is required to skip the name of the program "pos.py" from the command line
+        text = text + x + ' '
+    t_index=1
 
 body = {
 	'document': {
