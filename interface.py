@@ -14,8 +14,10 @@ if __name__ == "__main__":
     adp_cmd = "python3 Adpositions.py %s" % hInput
     noun_cmd = "python3 Nouns.py %s" % hInput
     verb_cmd = "python3 Verbs.py %s" % hInput
+    exam_cmd = "python3 exam.py"
     os.system(pos_cmd)
     os.system(adj_cmd)
     os.system(adp_cmd)
     os.system(noun_cmd)
     os.system(verb_cmd)
+    os.system(exam_cmd)
