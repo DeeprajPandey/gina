@@ -53,6 +53,7 @@ for word in EST:
 		G='' #grammatical gender
 		search_index = index -1
 		updated = False
+		
 		while(search_index > -1 and (updated==False or (Noun_Lexicon[word[0]][0]=='' or Noun_Lexicon[word[0]][1]=='U' or Noun_Lexicon[word[0]][2]==''))): #Going leftwards:
 			if(word[0] in Noun_Lexicon):
 				Saved_Nominative_Inflection = Noun_Lexicon[word[0]][0]
@@ -67,6 +68,7 @@ for word in EST:
 			#print(Current_word)
 			Current_word_tag = EST[search_index][1]
 			#print(Current_word_tag)
+			noun_phrase_present=False
 			if(Current_word_tag=='ADJ' and Current_word in ADJ_Lexicon):
 				Hindi_M = ADJ_Lexicon[Current_word][0] #male_inflection
 			#	print(Hindi_M)
@@ -109,14 +111,14 @@ for word in EST:
 						updated = True
 			if(Current_word_tag=='ADP' and Current_word in ADP_Lexicon):
 				Hindi_P = ADP_Lexicon[Current_word]
-				print(Hindi_P)
+				#print(Hindi_P)
 				HST_index = 0
 				found =False
 				Current_word_h = ''
 				for Hindi_word in HST:
 					if(Hindi_word == Hindi_P):
 						Current_word_h = Hindi_word
-						print(Current_word_h)
+						#print(Current_word_h)
 						found = True
 				if(found):
 					HST_index = HST.index(Current_word_h) #what if multiple instances? Constraint: only one
@@ -139,6 +141,8 @@ for word in EST:
 			#	print(Hindi_F)
 				HST_index = 0
 				found =False
+				if(index!=EST_size-1): #if there is anything after the object- this is admissible because no adverbs
+					noun_phrase_present=True 
 				Current_word_h = ''
 				for Hindi_word in HST:
 					if(Hindi_word == Hindi_F or Hindi_word == Hindi_M):
@@ -151,7 +155,8 @@ for word in EST:
 					if(EST[EST_index][1] == 'ADP'):
 						AD_absent= False
 					EST_index= EST_index+1
-				if(found and AD_absent): # interceding prepositions give rise to sentences like 'The cat is on the table': Gina cannot learn table from is, this is not SVO
+				if(found and AD_absent and noun_phrase_present==False): # interceding prepositions give rise to sentences like 'The cat is on the table': Gina cannot learn table from is, this is not SVO
+					#print("Here")
 					HST_index = HST.index(Current_word_h) #only one instance
 					HST_index= HST_index-1 #Previous word in Hindi, since Hindi: SOV, always feasible because verb will not be first word of sentence
 					H_noun = HST[HST_index] #object will immediately precede the verb, because confounding adjectives will come before the noun-object. There can be no confounding prepositions: 'The cat eats the rat on the table' is not allowed because it has a prepositional clause
@@ -172,6 +177,8 @@ for word in EST:
 			#	print(Hindi_M)
 				HST_index = 0
 				found =False
+				if(index!=EST_size-1): #if there is anything after the object- this is admissible because no adverbs
+					noun_phrase_present=True 
 				Current_word_h = ''
 				for Hindi_word in HST:
 					if(Hindi_word == Hindi_SN):
@@ -187,7 +194,7 @@ for word in EST:
 					if(EST[EST_index][1] == 'ADJ' or EST[EST_index][1] == 'ADP'):
 						AD_absent= False
 					EST_index= EST_index+1
-				if(found and AD_absent):
+				if(found and AD_absent and noun_phrase_present==False):
 					HST_index = HST.index(Current_word_h) #only one instance
 					HST_index= HST_index+1#Next word in Hindi, since Hindi: SOV, always feasible because subject will not be last word of sentence
 					if(HST[HST_index] =='ek'): #skip article
@@ -205,7 +212,7 @@ for word in EST:
 					if(Saved_Gender=='F' or (not H_noun.endswith('e') and not H_noun.endswith('a'))):
 						Noun_Lexicon.update({word[0]: [H_noun, Saved_Gender, H_noun]}) #nominative, accusative same for male nouns not ending in 'a', all female nouns. Gender still unknown
 						updated = True
-					break
+					
 			if(Current_word_tag=='PRON' and Current_word in Pronoun_Lexicon):
 				Hindi_SN = Pronoun_Lexicon[Current_word] #has to be nominative inflection: Hindi_SN: subject noun
 			#	print(Hindi_M)
@@ -213,6 +220,8 @@ for word in EST:
 					Hindi_SN = Pronoun_Lexicon[Current_word][0] #has to be nominative inflection: Hindi_SN: subject noun
 				HST_index = 0
 				found =False
+				if(index!=EST_size-1): #if there is anything after the object- this is admissible because no adverbs
+					noun_phrase_present=True 
 				Current_word_h = ''
 				for Hindi_word in HST:
 					if(Hindi_word == Hindi_SN):
@@ -228,7 +237,7 @@ for word in EST:
 					if(EST[EST_index][1] == 'ADJ' or EST[EST_index][1] == 'ADP'):
 						AD_absent= False
 					EST_index= EST_index+1
-				if(found and AD_absent):
+				if(found and AD_absent and noun_phrase_present==False):
 					HST_index = HST.index(Current_word_h) #only one instance
 					HST_index= HST_index+1#Next word in Hindi, since Hindi: SOV, always feasible because subject will not be last word of sentence
 					if(HST[HST_index] =='ek'): #skip article
@@ -257,6 +266,7 @@ for word in EST:
 				Current_word = EST[search_index][0]
 			Current_word = EST[search_index][0]
 			Current_word_tag = EST[search_index][1]
+			noun_phrase_present=False
 			if(Current_word_tag=='VERB' and Current_word in Verb_Lexicon):
 				Hindi_M = Verb_Lexicon[Current_word][0] #male_inflection
 			#	print(Hindi_M)
@@ -279,7 +289,9 @@ for word in EST:
 					EST_index= EST_index+1
 				if(EST_index!=EST_size):
 					Obj_exists=True
-				if(found and AD_absent): # interceding prepositions give rise to sentences like 'The cat is on the table': Gina cannot learn table from is, this is not SVO
+					if(EST_index!=EST_size-1): #there is something after the object if it exists
+						noun_phrase_present=True
+				if(found and AD_absent and noun_phrase_present==False): # interceding prepositions give rise to sentences like 'The cat is on the table': Gina cannot learn table from is, this is not SVO
 					HST_index = HST.index(Current_word_h) #only one instance
 					if(Current_word_h == Hindi_F):
 						G = 'F'
@@ -304,6 +316,7 @@ for word in EST:
 			#	print(Hindi_M)
 				HST_index = 0
 				found =False
+
 				Current_word_h = ''
 				for Hindi_word in HST:
 					if(Hindi_word == Hindi_ON):
@@ -312,6 +325,8 @@ for word in EST:
 				#Checking for presence of confounding adjectives attaching to object noun, which will come between S and O
 				token = [Current_word, Current_word_tag]
 				EST_index = search_index #only one instance
+				if(EST_index!=EST_size-1):
+					noun_phrase_present=True
 				#print(EST[EST_index][0])
 				#print(word[0])
 				AD_absent=True
@@ -319,7 +334,9 @@ for word in EST:
 					if(EST[EST_index][1] == 'ADJ' or EST[EST_index][1] == 'ADP'):
 						AD_absent= False
 					EST_index= EST_index-1
-				if(found and AD_absent):
+
+				if(found and AD_absent and noun_phrase_present==False):
+					#print("Here")
 					HST_index = HST.index(Current_word_h) #only one instance
 					HST_index= HST_index-1#Prev word in Hindi, since Hindi: SOV, always feasible because object will not be first word of sentence
 					if(HST[HST_index] =='ek'): #skip article
@@ -345,6 +362,8 @@ for word in EST:
 				#Checking for presence of confounding adjectives attaching to object noun, which will come between S and O
 				token = [Current_word, Current_word_tag]
 				EST_index = EST.index(token) #only one instance
+				if(EST_index!=EST_size-1):
+					noun_phrase_present=True
 				#print(EST[EST_index][0])
 				#print(word[0])
 				AD_absent=True
@@ -352,7 +371,7 @@ for word in EST:
 					if(EST[EST_index][1] == 'ADJ' or EST[EST_index][1] == 'ADP'):
 						AD_absent= False
 					EST_index= EST_index-1
-				if(found and AD_absent):
+				if(found and AD_absent and noun_phrase_present==False):
 					HST_index = HST.index(Current_word_h)
 					HST_index= HST_index - 1 #Previous word in Hindi, since Hindi: SOV, always feasible because subject will not be last word of sentence
 					if(HST[HST_index] =='ek'): #skip article

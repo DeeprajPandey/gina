@@ -46,8 +46,9 @@ EST_size = len(EST)
 index=-1;
 for word in EST:
 	index=index+1 #gives us the index of word
-	if(word[1]=='VERB' and word[0] not in Verb_Lexicon): #UNKNOWN VERB
+	if(word[1]=='VERB' and word[0] not in Verb_Lexicon or (word[0] in Verb_Lexicon and (Verb_Lexicon[word[0]][0]=='' or Verb_Lexicon[word[0]][1]==''))  and word[0] != 'are'): #UNKNOWN VERB
 		VG ='' #grammatical gender
+		#if(word[0] in Verb_Lexicon):
 		search_index = index -1
 		updated = False
 		while(search_index > -1 and updated==False):
@@ -155,8 +156,8 @@ for word in EST:
 						HST_index= HST_index+1 #We have reached the object in Hindi SOV if it exists
 						if(HST[HST_index] =='ek'): #skip article
 							HST_index= HST_index+1
-					HST_index= HST_index+1 #We have reached the verb in Hindi SOV if object doesn't exist: SV, and also if it exists in SOV
-					if(HST[HST_index] == 'ko'):
+						HST_index= HST_index+1 #We have reached the verb in Hindi SOV if object doesn't exist: SV, and also if it exists in SOV
+						if(HST[HST_index] == 'ko'):
 							HST_index= HST_index+1
 					H_verb = HST[HST_index]
 					if(Current_word=='you' or Current_word=='I'):
@@ -188,7 +189,7 @@ for word in EST:
 		#print(search_index)
 		while(search_index < EST_size and updated==False):
 			Current_word = EST[search_index][0]
-			print(Current_word)
+			#print(Current_word)
 			Current_word_tag = EST[search_index][1]
 			if(Current_word_tag=='NOUN' and Current_word in Noun_Lexicon):
 				#print(1)
@@ -215,9 +216,9 @@ for word in EST:
 				#print(ADP_count)
 				if(found):
 					HST_index = HST.index(Current_word_h) #only one instance
-					print(HST_index)
+					#print(HST_index)
 					HST_index= HST_index+1+ ADP_count #We have reached the verb in Hindi: SOV, if there is no 'ko', whether or not there were adjectives, because these would come before the object; we have added 1 if presence of preposition
-					print('HST_index', HST_index)
+					#print('HST_index', HST_index)
 					if(HST[HST_index] == 'ko'):
 						HST_index= HST_index+1 #skip the 'ko' to reach verb
 					H_verb = HST[HST_index]
@@ -258,26 +259,26 @@ for word in EST:
 					if(Hindi_word == Hindi_N):
 						Current_word_h = Hindi_word
 						found = True	#neccessary, because although the noun is present, its accusative inflection might not be
-				print(found)
+				#print(found)
 				token = [Current_word, Current_word_tag] #the subject
 				EST_index = EST.index(token) -1  #only one instance, starting from previous to check for existence of preposition
 				ADP_count=0
-				print(EST_index)
+				#print(EST_index)
 				while(EST[EST_index][0] != word[0]): #until we reach the verb
 					if(EST[EST_index][1] == 'ADP'):
 						ADP_count= ADP_count+1
 					EST_index= EST_index-1
-				print(EST_index)
-				print(ADP_count)
+				#print(EST_index)
+				#print(ADP_count)
 				if(found):
 					HST_index = HST.index(Current_word_h) #only one instance
-					print(HST_index)
+					#print(HST_index)
 					HST_index= HST_index+1+ ADP_count #We have reached the verb in Hindi: SOV, if there is no 'ko', whether or not there were adjectives, because these would come before the object; we have added 1 if presence of preposition
-					print('HST_index', HST_index)
+					#print('HST_index', HST_index)
 					if(HST[HST_index] == 'ko'):
 						HST_index= HST_index+1 #skip the 'ko' to reach verb
 					H_verb = HST[HST_index]
-					print(H_verb)
+					#print(H_verb)
 					Person =''
 					if(word[0].endswith('s')): #most third person English verbs end in 's'
 						Person = 'Third Person'#because there were no plural nouns
