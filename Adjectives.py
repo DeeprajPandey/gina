@@ -1,3 +1,4 @@
+#PART II: Niyati
 # json for Google Language API and lexicon
 # sys for accepting the string as command line argument when the file is called
 import json, sys
