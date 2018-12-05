@@ -7,7 +7,6 @@ How? Fret not. She is going to guide you throughout.
 Gina uses Google Natural Language API for syntax analysis. She tries to extrapolate her reasoning from how she learned English to the new language (which could be completely imaginary, as long as you set and follow the basic rules of a language).
 
 ## Setup
----
 
 ### Authentication
 Gina is still under development. You would need to setup credentials from your Google Cloud Platform to run the scripts.
