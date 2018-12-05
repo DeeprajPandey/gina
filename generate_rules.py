@@ -95,7 +95,7 @@ return weight
 
 def print_syntax_rules(HN_tokens):
     SVO = {}
-    # [0][0] to flatten the arrays into an integers
+    # [0][0] to flatten the array into an integers
     # Subject changes in first 2 sentences
     sub_pos = np.where(HN_tokens[0] != HN_tokens[4])[0][0]
     # Verb in second and third
@@ -121,11 +121,6 @@ def print_syntax_rules(HN_tokens):
     for key in sorted(SVO.keys()):
         print('%s' % SVO[key], end = ', ')
     
-    
-    # Preposition changes in fifth and sixth
-    # Store the index of the pre/post-position
-    #prep_pos = np.where(HN_tokens[1] != HN_tokens[3])[0][0]
-    
     # Get the noun that is constant in the preposition case
     # from when we parsed object
     if flag:
@@ -147,15 +142,6 @@ if (new_noun_index_p < mid1 and new_noun_index_p < mid2):
 else:
     print("PN/NP couldn't be determined with the data currently available.")
     
-    
-    # if prep_pos < new_noun_index_p:
-    #     print("\nprepositions come before Nouns,")
-    # elif prep_pos > new_noun_index_p:
-    #     print("\nprepositions come after Nouns (postpositions),")
-    # else:
-    #     print("PN/NP couldn't be determined with the data currently available.")
-    
-    
     # Adpositions change in third and seventh
     # ad_pos = np.where(HN_tokens[2] != HN_tokens[6])[0][0]
     
@@ -176,20 +162,12 @@ else:
     else:
         print("AN/NA couldn't be determined with the data currently available.")
 
-# if ad_pos < new_noun_index_a:
-#     print("and adjectives come before nouns.")
-# elif prep_pos > new_noun_index_a:
-#     print("and adjectives come after nouns.")
-# else:
-#     print("AN/NA couldn't be determined with the data currently available.")
-
 # Subject changes in 0,4 (use noun from 4 for AN)
 # Verb changes in 0,7
 # Object changes in 0,5 (use noun from 0 for PN)
 # Preposition changes in 1,3
 # Adjective changes in 2,6
 EN_Sentences = ["The girl eats the banana.", "Near the banana?", "The small fly.", "On top of the banana?", "The fly eats the banana.", "The girl eats the fly.", "The sad fly.", "The girl throws the banana.", "The sad girl."]
-#HN_Sentences = ["Ladki ne kela khaya.", "Kele ke paas?", "Chhoti makhi.", "Kele ke upar.", "Makhi ne kela khaya.", "Ladki ne makhi khaya.", "Dukhi makhi.", "Ladki ne kela feka.", "Dukhi ladki."]
 HN_Sentences = []
 HN_tokens = []
 # Regex to strip input of punctuation
@@ -197,6 +175,21 @@ regex = re.compile('[%s]' % re.escape(string.punctuation))
 
 # Get the user translated inputs if the program is run explicitly
 if __name__ == '__main__':
+    # Hindi
+    #HN_Sentences = ["Ladki kela khaati hai.", "Kele ke paas?", "Chhoti makhi.", "Kele ke upar.", "Makhi kela khaati hai.", "Ladki makhi khaati hai.", "Dukhi makhi.", "Ladki kela fenkti hai.", "Dukhi ladki."]
+    # Odia
+    #HN_Sentences = ["Jhia ta kadali khae.", "Kadali pakhare?", "Chhota machhi.", "Kadali upare?", "Machhi ta kadali khae.", "Jhia ta machhi khae.", "Dukhi machhi.", "Jhia ta kadali phopade.", "Dukhi jhia."]
+    # Bengali
+    #HN_Sentences = ["Meye ta kola khacche.", "Kolar kache?", "Chhoto machhi", "Kolar opor?", "Machhi ta kola khacche", "Meye ta machhi khacche", "Dukhi machhi", "Meye ta kola felche", "Dukhi meye"]
+    # French
+    #HN_Sentences = ["la fille mange la banane", "pres de la banane", "la petite mouche", "sur la banane", "la mouche mange la banane", "la fille mange la mouche", "la mouche triste", "la fille jet la banane", "la fille triste"]
+    # Spanish
+    #HN_Sentences = ["La chica come el platano", "Cerca del platano?", "Una pequena mosca", "Encima del platano", "La mosca come el platano", "La chica come la mosca", "La mosca triste", "La chica lanza el platano", "La chica triste"]
+    # Marwari
+    #HN_Sentences = ["tabari kela khaaye se", "kele ke bagalma", "chhoti makhi", "kele ke upar", "makhi kela khaaye se", "tabari makhi khaaye se", "tabari kela feke hai", "tabari kela feke hai", "dukhi tabari"]
+    # Punjabi
+    #HN_Sentences = ["Kudi kela khandi hai.", "kele de kol?", "chhoti makkhi.", "Kele de upar?", "Makkhi kela khandi hai.", "Kudi makkhi khandi hai.", "udas makkhi.", "Kudi kela sutt-di hai.", "Udas Kudi."]
+    
     for sentence in EN_Sentences:
         print("Sentence in English: " + sentence)
         h_input = input("Enter translation in your language: ")
