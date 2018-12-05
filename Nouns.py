@@ -91,7 +91,8 @@ for word in EST:
 						G = 'M'
 					elif(Current_word_h == Hindi_A):
 						G = 'M' #ONLY MALE ADJECTIVES INFLECT FOR CASE
-
+					if(Hindi_M==Hindi_F):
+						G = 'U'
 					HST_index= HST_index+1 #Next word in Hindi, since ADJN, always feasible because adjective will not be last word of sentence
 					H_noun = HST[HST_index]
 					next = HST[HST_index+1] #also feasible because can't end a sentence with 'bada kela'
