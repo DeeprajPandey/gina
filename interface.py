@@ -68,7 +68,6 @@ if __name__ == "__main__":
                     end_word_count = end_word_count + 1
             words_learnt = end_word_count - orig_words
 
-            print("\n")
             # Prints the progress bar
             count = float(words_learnt/word_count)*100
             total = 100
