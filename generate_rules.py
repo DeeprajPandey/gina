@@ -194,6 +194,8 @@ if __name__ == '__main__':
     #HN_Sentences = ["tabari kela khaaye se", "kele ke bagalma", "chhoti makhi", "kele ke upar", "makhi kela khaaye se", "tabari makhi khaaye se", "tabari kela feke hai", "tabari kela feke hai", "dukhi tabari"]
     # Punjabi
     #HN_Sentences = ["Kudi kela khandi hai.", "kele de kol?", "chhoti makkhi.", "Kele de upar?", "Makkhi kela khandi hai.", "Kudi makkhi khandi hai.", "udas makkhi.", "Kudi kela sutt-di hai.", "Udas Kudi."]
+    # Kashmiri
+    #HN_Sentences = ["koor chhe kel khewan.", "kelas nish.", "laket mechh.", "kelas peyth.", "mechh chhe kel khewan.", "koor chhe mechh khewan.", "udaas mechh.", "koor chhe kel chhakan.", "udaas koor."]
 
     for sentence in EN_Sentences:
        print("Sentence in English: " + sentence)
