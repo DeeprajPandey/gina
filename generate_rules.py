@@ -181,7 +181,7 @@ regex = re.compile('[%s]' % re.escape(string.punctuation))
 # Get the user translated inputs if the program is run explicitly
 if __name__ == '__main__':
     # Hindi
-    HN_Sentences = ["Ladki kela khaati hai.", "Kele ke paas?", "Chhoti makhi.", "Kele ke upar.", "Makhi kela khaati hai.", "Ladki makhi khaati hai.", "Dukhi makhi.", "Ladki kela fenkti hai.", "Dukhi ladki."]
+    #HN_Sentences = ["Ladki kela khaati hai.", "Kele ke paas?", "Chhoti makhi.", "Kele ke upar.", "Makhi kela khaati hai.", "Ladki makhi khaati hai.", "Dukhi makhi.", "Ladki kela fenkti hai.", "Dukhi ladki."]
     # Odia
     #HN_Sentences = ["Jhia ta kadali khae.", "Kadali pakhare?", "Chhota machhi.", "Kadali upare?", "Machhi ta kadali khae.", "Jhia ta machhi khae.", "Dukhi machhi.", "Jhia ta kadali phopade.", "Dukhi jhia."]
     # Bengali
@@ -194,13 +194,14 @@ if __name__ == '__main__':
     #HN_Sentences = ["tabari kela khaaye se", "kele ke bagalma", "chhoti makhi", "kele ke upar", "makhi kela khaaye se", "tabari makhi khaaye se", "tabari kela feke hai", "tabari kela feke hai", "dukhi tabari"]
     # Punjabi
     #HN_Sentences = ["Kudi kela khandi hai.", "kele de kol?", "chhoti makkhi.", "Kele de upar?", "Makkhi kela khandi hai.", "Kudi makkhi khandi hai.", "udas makkhi.", "Kudi kela sutt-di hai.", "Udas Kudi."]
+
+    for sentence in EN_Sentences:
+       print("Sentence in English: " + sentence)
+       h_input = input("Enter translation in your language: ")
+       HN_Sentences.append(h_input)
     
-    #for sentence in EN_Sentences:
-    #   print("Sentence in English: " + sentence)
-    #   h_input = input("Enter translation in your language: ")
-    #   HN_Sentences.append(h_input)
     # Tokenise the inputs. HN_tokens = [['hello','world']['sentence','two']]
-    for h_st in HN_Sentences: 
+    for h_st in HN_Sentences:
         tokenize = np.array(regex.sub('', h_st).split())
         HN_tokens.append(tokenize)
 
