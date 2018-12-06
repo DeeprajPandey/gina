@@ -2,7 +2,7 @@
   "sentences": [
     {
       "text": {
-        "content": "I go to the great movie",
+        "content": "The cat chews the banana",
         "beginOffset": 0
       }
     }
@@ -10,83 +10,8 @@
   "tokens": [
     {
       "text": {
-        "content": "I",
+        "content": "The",
         "beginOffset": 0
-      },
-      "partOfSpeech": {
-        "tag": "PRON",
-        "aspect": "ASPECT_UNKNOWN",
-        "case": "NOMINATIVE",
-        "form": "FORM_UNKNOWN",
-        "gender": "GENDER_UNKNOWN",
-        "mood": "MOOD_UNKNOWN",
-        "number": "SINGULAR",
-        "person": "FIRST",
-        "proper": "PROPER_UNKNOWN",
-        "reciprocity": "RECIPROCITY_UNKNOWN",
-        "tense": "TENSE_UNKNOWN",
-        "voice": "VOICE_UNKNOWN"
-      },
-      "dependencyEdge": {
-        "headTokenIndex": 1,
-        "label": "NSUBJ"
-      },
-      "lemma": "I"
-    },
-    {
-      "text": {
-        "content": "go",
-        "beginOffset": 2
-      },
-      "partOfSpeech": {
-        "tag": "VERB",
-        "aspect": "ASPECT_UNKNOWN",
-        "case": "CASE_UNKNOWN",
-        "form": "FORM_UNKNOWN",
-        "gender": "GENDER_UNKNOWN",
-        "mood": "INDICATIVE",
-        "number": "NUMBER_UNKNOWN",
-        "person": "PERSON_UNKNOWN",
-        "proper": "PROPER_UNKNOWN",
-        "reciprocity": "RECIPROCITY_UNKNOWN",
-        "tense": "PRESENT",
-        "voice": "VOICE_UNKNOWN"
-      },
-      "dependencyEdge": {
-        "headTokenIndex": 1,
-        "label": "ROOT"
-      },
-      "lemma": "go"
-    },
-    {
-      "text": {
-        "content": "to",
-        "beginOffset": 5
-      },
-      "partOfSpeech": {
-        "tag": "ADP",
-        "aspect": "ASPECT_UNKNOWN",
-        "case": "CASE_UNKNOWN",
-        "form": "FORM_UNKNOWN",
-        "gender": "GENDER_UNKNOWN",
-        "mood": "MOOD_UNKNOWN",
-        "number": "NUMBER_UNKNOWN",
-        "person": "PERSON_UNKNOWN",
-        "proper": "PROPER_UNKNOWN",
-        "reciprocity": "RECIPROCITY_UNKNOWN",
-        "tense": "TENSE_UNKNOWN",
-        "voice": "VOICE_UNKNOWN"
-      },
-      "dependencyEdge": {
-        "headTokenIndex": 1,
-        "label": "PREP"
-      },
-      "lemma": "to"
-    },
-    {
-      "text": {
-        "content": "the",
-        "beginOffset": 8
       },
       "partOfSpeech": {
         "tag": "DET",
@@ -103,18 +28,68 @@
         "voice": "VOICE_UNKNOWN"
       },
       "dependencyEdge": {
-        "headTokenIndex": 5,
+        "headTokenIndex": 1,
         "label": "DET"
       },
-      "lemma": "the"
+      "lemma": "The"
     },
     {
       "text": {
-        "content": "great",
-        "beginOffset": 12
+        "content": "cat",
+        "beginOffset": 4
       },
       "partOfSpeech": {
-        "tag": "ADJ",
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "SINGULAR",
+        "person": "PERSON_UNKNOWN",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": {
+        "headTokenIndex": 2,
+        "label": "NSUBJ"
+      },
+      "lemma": "cat"
+    },
+    {
+      "text": {
+        "content": "chews",
+        "beginOffset": 8
+      },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "INDICATIVE",
+        "number": "PLURAL",
+        "person": "THIRD",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "PRESENT",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": {
+        "headTokenIndex": 2,
+        "label": "ROOT"
+      },
+      "lemma": "chew"
+    },
+    {
+      "text": {
+        "content": "the",
+        "beginOffset": 14
+      },
+      "partOfSpeech": {
+        "tag": "DET",
         "aspect": "ASPECT_UNKNOWN",
         "case": "CASE_UNKNOWN",
         "form": "FORM_UNKNOWN",
@@ -128,14 +103,14 @@
         "voice": "VOICE_UNKNOWN"
       },
       "dependencyEdge": {
-        "headTokenIndex": 5,
-        "label": "AMOD"
+        "headTokenIndex": 4,
+        "label": "DET"
       },
-      "lemma": "great"
+      "lemma": "the"
     },
     {
       "text": {
-        "content": "movie",
+        "content": "banana",
         "beginOffset": 18
       },
       "partOfSpeech": {
@@ -154,9 +129,9 @@
       },
       "dependencyEdge": {
         "headTokenIndex": 2,
-        "label": "POBJ"
+        "label": "DOBJ"
       },
-      "lemma": "movie"
+      "lemma": "banana"
     }
   ],
   "language": "en"

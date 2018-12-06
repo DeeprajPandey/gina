@@ -68,6 +68,7 @@ for word in EST:
 						found = True		#Since English is SVO, if we move backwards from the noun, the noun: O.	It is also possible that the verb is present in her lexicon but not the right inflection of it, in which she will not learn anything
 				token = [Current_word, Current_word_tag] #the subject
 				EST_index = EST.index(token) + 1  #only one instance, starting from next
+				print(Current_word)
 				ADP_count=0
 				Obj_exists=False
 				while((EST_index < EST_size) and (EST[EST_index][1] != 'NOUN' and EST[EST_index][1] != 'PRON')): #until we reach the object if it exists
@@ -81,7 +82,9 @@ for word in EST:
 				#print(Obj_exists)
 				if(found): # interceding prepositions give rise to sentences like 'The cat is on the table'
 					HST_index = HST.index(Current_word_h) #only one instance
+					
 					HST_index= HST_index+1 #We have reached the verb in Hindi SOV if object doesn't exist: SV
+					
 					VG = NG #verb inflects for subject
 					if(Obj_exists):
 						if(HST[HST_index] =='ek'): #skip article
@@ -89,12 +92,11 @@ for word in EST:
 						skipper=0
 						while(skipper<ADP_count): #to count adjectives before the object, adpositions
 							HST_index= HST_index+1
+							
 							skipper = skipper+1
-							if(HST[HST_index] == 'aur' or HST[HST_index] == 'or' or HST[HST_index] == 'aar' or HST[HST_index] == 'lekin' or HST[HST_index] == 'par'): #consecutive adjectives in Hindi may be interlocuted by 'and' and 'but'
+							if(HST[HST_index] == 'aur' or HST[HST_index] == 'or' or HST[HST_index] == 'aar' or HST[HST_index] == 'lekin'): #consecutive adjectives in Hindi may be interlocuted by 'and' and 'but'
 								HST_index= HST_index+1 #we have reached the last adjective
 						HST_index= HST_index+1 #We have reached the verb in Hindi SOV if it exists
-						
-					
 					if(HST[HST_index] == 'ko'):
 						HST_index= HST_index+1
 					

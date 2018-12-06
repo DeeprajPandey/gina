@@ -134,6 +134,11 @@
       "movie",
       "U",
       "movie"
+    ],
+    "banana": [
+      "",
+      "U",
+      "kele"
     ]
   },
   "verbs": {
@@ -231,6 +236,11 @@
       "",
       "jaati",
       "First, Second Person"
+    ],
+    "chews": [
+      "",
+      "chabaati",
+      "Third Person"
     ]
   },
   "adjectives": {
