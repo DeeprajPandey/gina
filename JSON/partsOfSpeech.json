@@ -2,7 +2,7 @@
   "sentences": [
     {
       "text": {
-        "content": "He gives me the bed",
+        "content": "the good bottle fills",
         "beginOffset": 0
       }
     }
@@ -10,83 +10,8 @@
   "tokens": [
     {
       "text": {
-        "content": "He",
-        "beginOffset": 0
-      },
-      "partOfSpeech": {
-        "tag": "PRON",
-        "aspect": "ASPECT_UNKNOWN",
-        "case": "NOMINATIVE",
-        "form": "FORM_UNKNOWN",
-        "gender": "MASCULINE",
-        "mood": "MOOD_UNKNOWN",
-        "number": "SINGULAR",
-        "person": "THIRD",
-        "proper": "PROPER_UNKNOWN",
-        "reciprocity": "RECIPROCITY_UNKNOWN",
-        "tense": "TENSE_UNKNOWN",
-        "voice": "VOICE_UNKNOWN"
-      },
-      "dependencyEdge": {
-        "headTokenIndex": 1,
-        "label": "NSUBJ"
-      },
-      "lemma": "He"
-    },
-    {
-      "text": {
-        "content": "gives",
-        "beginOffset": 3
-      },
-      "partOfSpeech": {
-        "tag": "VERB",
-        "aspect": "ASPECT_UNKNOWN",
-        "case": "CASE_UNKNOWN",
-        "form": "FORM_UNKNOWN",
-        "gender": "GENDER_UNKNOWN",
-        "mood": "INDICATIVE",
-        "number": "SINGULAR",
-        "person": "THIRD",
-        "proper": "PROPER_UNKNOWN",
-        "reciprocity": "RECIPROCITY_UNKNOWN",
-        "tense": "PRESENT",
-        "voice": "VOICE_UNKNOWN"
-      },
-      "dependencyEdge": {
-        "headTokenIndex": 1,
-        "label": "ROOT"
-      },
-      "lemma": "give"
-    },
-    {
-      "text": {
-        "content": "me",
-        "beginOffset": 9
-      },
-      "partOfSpeech": {
-        "tag": "PRON",
-        "aspect": "ASPECT_UNKNOWN",
-        "case": "ACCUSATIVE",
-        "form": "FORM_UNKNOWN",
-        "gender": "GENDER_UNKNOWN",
-        "mood": "MOOD_UNKNOWN",
-        "number": "SINGULAR",
-        "person": "FIRST",
-        "proper": "PROPER_UNKNOWN",
-        "reciprocity": "RECIPROCITY_UNKNOWN",
-        "tense": "TENSE_UNKNOWN",
-        "voice": "VOICE_UNKNOWN"
-      },
-      "dependencyEdge": {
-        "headTokenIndex": 1,
-        "label": "IOBJ"
-      },
-      "lemma": "me"
-    },
-    {
-      "text": {
         "content": "the",
-        "beginOffset": 12
+        "beginOffset": 0
       },
       "partOfSpeech": {
         "tag": "DET",
@@ -103,15 +28,40 @@
         "voice": "VOICE_UNKNOWN"
       },
       "dependencyEdge": {
-        "headTokenIndex": 4,
+        "headTokenIndex": 3,
         "label": "DET"
       },
       "lemma": "the"
     },
     {
       "text": {
-        "content": "bed",
-        "beginOffset": 16
+        "content": "good",
+        "beginOffset": 4
+      },
+      "partOfSpeech": {
+        "tag": "ADJ",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": {
+        "headTokenIndex": 3,
+        "label": "AMOD"
+      },
+      "lemma": "good"
+    },
+    {
+      "text": {
+        "content": "bottle",
+        "beginOffset": 9
       },
       "partOfSpeech": {
         "tag": "NOUN",
@@ -128,10 +78,35 @@
         "voice": "VOICE_UNKNOWN"
       },
       "dependencyEdge": {
-        "headTokenIndex": 1,
-        "label": "DOBJ"
+        "headTokenIndex": 3,
+        "label": "NN"
       },
-      "lemma": "bed"
+      "lemma": "bottle"
+    },
+    {
+      "text": {
+        "content": "fills",
+        "beginOffset": 16
+      },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "INDICATIVE",
+        "number": "SINGULAR",
+        "person": "THIRD",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "PRESENT",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": {
+        "headTokenIndex": 3,
+        "label": "ROOT"
+      },
+      "lemma": "fill"
     }
   ],
   "language": "en"

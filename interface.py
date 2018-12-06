@@ -20,7 +20,7 @@ if __name__ == "__main__":
             for key in lex_dict[category]:
                 orig_words = orig_words + 1
 
-        enInput = input("Enter your english string.\n")
+        enInput = input("Give Gina an English sentence:\n")
         regex = re.compile('[%s]' % re.escape(string.punctuation)) # Using regex to ignore punctuation in the text input
         word_list = (regex.sub('', enInput)).split() # Store the non-punctuated english sentence's words in a list
         for elem in word_list:
@@ -28,7 +28,7 @@ if __name__ == "__main__":
                 for indiv in lex_dict[categ]:
                     if elem == indiv:
                         word_count = word_count + 1
-        h_Input = input("\nEnter your hindi string.\n")
+        h_Input = input("\nGive Gina its Hindi translation:\n")
         hInput = regex.sub('', h_Input)
         pos_cmd = "python3 pos.py %s" % enInput
         adj_cmd = "python3 Adjectives.py %s" % hInput
@@ -47,13 +47,13 @@ if __name__ == "__main__":
             print("\n=====================================================================================================")
             print("| Enter the corresponding number to choose an option from below.                                    |")
             print("=====================================================================================================")
-            print("| 1. Enter more sentences for Gina to learn from.                                                   |")
-            print("| 2. Print all the nouns that Gina knows.                                                           |")
-            print("| 3. Print all the verbs that Gina knows.                                                           |")
-            print("| 4. Print all the adjectives that Gina knows.                                                      |")
-            print("| 5. Print all the prepositions that Gina knows.                                                    |")
-            print("| 6. Print all the pronouns that Gina knows.                                                        |")
-            print("| 7. Make Gina take an exam based on whatever has been input and her previously acquired knowledge. |")
+            print("| 1. Teach Gina!                                                                                    |")
+            print("| 2. View the nouns that Gina knows.                                                                |")
+            print("| 3. View the verbs that Gina knows.                                                                |")
+            print("| 4. View the adjectives that Gina knows.                                                           |")
+            print("| 5. View the prepositions that Gina knows.                                                         |")
+            print("| 6. View the the pronouns that Gina knows.                                                         |")
+            print("| 7. Test Gina!                                                                                     |")
             print("| 8. Exit the program.                                                                              |")
             print("=====================================================================================================\n")
             print("Your choice:", end = "")

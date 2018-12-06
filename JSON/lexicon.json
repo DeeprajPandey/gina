@@ -106,9 +106,29 @@
       "paani"
     ],
     "bed": [
-      "bistar",
+      "",
       "U",
       "bistar"
+    ],
+    "ta": [
+      "ta",
+      "M",
+      ""
+    ],
+    "bag": [
+      "basta",
+      "M",
+      ""
+    ],
+    "bottle": [
+      "botal",
+      "F",
+      "botal"
+    ],
+    "fills": [
+      "botal",
+      "F",
+      "botal"
     ]
   },
   "verbs": {
@@ -283,6 +303,11 @@
       "saphed",
       "saphed",
       "saphed"
+    ],
+    "high": [
+      "oocha",
+      "",
+      ""
     ]
   },
   "adpositions": {
