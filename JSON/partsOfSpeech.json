@@ -2,7 +2,7 @@
   "sentences": [
     {
       "text": {
-        "content": "the good bottle fills",
+        "content": "I go to the great movie",
         "beginOffset": 0
       }
     }
@@ -10,8 +10,83 @@
   "tokens": [
     {
       "text": {
-        "content": "the",
+        "content": "I",
         "beginOffset": 0
+      },
+      "partOfSpeech": {
+        "tag": "PRON",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "NOMINATIVE",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "SINGULAR",
+        "person": "FIRST",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": {
+        "headTokenIndex": 1,
+        "label": "NSUBJ"
+      },
+      "lemma": "I"
+    },
+    {
+      "text": {
+        "content": "go",
+        "beginOffset": 2
+      },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "INDICATIVE",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "PRESENT",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": {
+        "headTokenIndex": 1,
+        "label": "ROOT"
+      },
+      "lemma": "go"
+    },
+    {
+      "text": {
+        "content": "to",
+        "beginOffset": 5
+      },
+      "partOfSpeech": {
+        "tag": "ADP",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": {
+        "headTokenIndex": 1,
+        "label": "PREP"
+      },
+      "lemma": "to"
+    },
+    {
+      "text": {
+        "content": "the",
+        "beginOffset": 8
       },
       "partOfSpeech": {
         "tag": "DET",
@@ -28,15 +103,15 @@
         "voice": "VOICE_UNKNOWN"
       },
       "dependencyEdge": {
-        "headTokenIndex": 3,
+        "headTokenIndex": 5,
         "label": "DET"
       },
       "lemma": "the"
     },
     {
       "text": {
-        "content": "good",
-        "beginOffset": 4
+        "content": "great",
+        "beginOffset": 12
       },
       "partOfSpeech": {
         "tag": "ADJ",
@@ -53,15 +128,15 @@
         "voice": "VOICE_UNKNOWN"
       },
       "dependencyEdge": {
-        "headTokenIndex": 3,
+        "headTokenIndex": 5,
         "label": "AMOD"
       },
-      "lemma": "good"
+      "lemma": "great"
     },
     {
       "text": {
-        "content": "bottle",
-        "beginOffset": 9
+        "content": "movie",
+        "beginOffset": 18
       },
       "partOfSpeech": {
         "tag": "NOUN",
@@ -78,35 +153,10 @@
         "voice": "VOICE_UNKNOWN"
       },
       "dependencyEdge": {
-        "headTokenIndex": 3,
-        "label": "NN"
+        "headTokenIndex": 2,
+        "label": "POBJ"
       },
-      "lemma": "bottle"
-    },
-    {
-      "text": {
-        "content": "fills",
-        "beginOffset": 16
-      },
-      "partOfSpeech": {
-        "tag": "NOUN",
-        "aspect": "ASPECT_UNKNOWN",
-        "case": "CASE_UNKNOWN",
-        "form": "FORM_UNKNOWN",
-        "gender": "GENDER_UNKNOWN",
-        "mood": "INDICATIVE",
-        "number": "SINGULAR",
-        "person": "THIRD",
-        "proper": "PROPER_UNKNOWN",
-        "reciprocity": "RECIPROCITY_UNKNOWN",
-        "tense": "PRESENT",
-        "voice": "VOICE_UNKNOWN"
-      },
-      "dependencyEdge": {
-        "headTokenIndex": 3,
-        "label": "ROOT"
-      },
-      "lemma": "fill"
+      "lemma": "movie"
     }
   ],
   "language": "en"

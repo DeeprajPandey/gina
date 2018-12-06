@@ -129,6 +129,11 @@
       "botal",
       "F",
       "botal"
+    ],
+    "movie": [
+      "movie",
+      "U",
+      "movie"
     ]
   },
   "verbs": {
@@ -221,6 +226,11 @@
       "deta",
       "",
       "Third Person"
+    ],
+    "go": [
+      "",
+      "jaati",
+      "First, Second Person"
     ]
   },
   "adjectives": {
@@ -308,12 +318,23 @@
       "oocha",
       "",
       ""
+    ],
+    "heavy": [
+      "",
+      "bhaari",
+      ""
+    ],
+    "strong": [
+      "takatvar",
+      "takatvar",
+      "takatvar"
     ]
   },
   "adpositions": {
     "on": "par",
     "in": "mein",
-    "under": "neeche"
+    "under": "neeche",
+    "to": "ko"
   },
   "pronouns": {
     "me": "mujhko",

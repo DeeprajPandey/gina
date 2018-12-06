@@ -67,6 +67,8 @@ for word in EST:
 				Hindi_Nom = Noun_Lexicon[Current_word][0] #nominative_inflection: bada kutta
 				Hindi_Acc = Noun_Lexicon[Current_word][2] #accusative_inflection: bade kutte ko
 				Hindi_G = Noun_Lexicon[Current_word][1] #accusative_inflection
+				if(Hindi_G=='U'):
+					print("Adjective: %s not learnt because gender of noun: %s is unknown!" %(word[0],Current_word))
 				HST_index = 0
 				found =False
 				Current_word_h = ''
@@ -119,6 +121,7 @@ for word in EST:
 							if(CASE=='ACC'):
 								ADJ_Lexicon.update({word[0]: [Saved_Male_Inflection, Saved_Female_Inflection, H_ADJ]})
 								updated=True
+
 			if(Current_word_tag=='NOUN' and Current_word not in Noun_Lexicon):
 				Cannot_be_learned=True #if we do not know the noun right after adjective, we cannot learn this adjective from other nouns! Must abort
 			search_index = search_index +1
