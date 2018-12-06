@@ -25,9 +25,9 @@ if __name__ == "__main__":
         print("| 8. Exit the program.                                                                              |")
         print("=====================================================================================================\n")
         print("Your choice:", end = "")
-        check = input(" ")
+        option = input(" ")
         os.system("clear") # Clears the screen
-        if check == '1':
+        if option == '1':
             # We don't need to ignore punctuations in the english input here, because when the API is called, the PUNCT tag is specifically skipped
             # in the rest of the python programs
             # We ask the user to input till they wish to stop. Also, after every input, we ask them if they wish to see the lexicon that Gina has developed
@@ -86,7 +86,7 @@ if __name__ == "__main__":
             r = input("\n")
             if r == "":
                 os.system("clear") # Clears the screen
-        elif check == '2':
+        elif option == '2':
             with open('JSON/lexicon.json', 'r') as f: #calling lexicon.json for read and storing it into a dictionary
                 temp_dict = json.loads(f.read())
 
@@ -100,7 +100,7 @@ if __name__ == "__main__":
             r = input("Press enter to go back to the menu.")
             if r == "":
                 os.system("clear") # Clears the screen
-        elif check == '3':
+        elif option == '3':
             with open('JSON/lexicon.json', 'r') as f: #calling lexicon.json for read and storing it into a dictionary
                 temp_dict = json.loads(f.read())
 
@@ -114,7 +114,7 @@ if __name__ == "__main__":
             r = input("Press enter to go back to the menu.")
             if r == "":
                 os.system("clear") # Clears the screen
-        elif check == '4':
+        elif option == '4':
             with open('JSON/lexicon.json', 'r') as f: #calling lexicon.json for read and storing it into a dictionary
                 temp_dict = json.loads(f.read())
 
@@ -128,7 +128,7 @@ if __name__ == "__main__":
             r = input("Press enter to go back to the menu.")
             if r == "":
                 os.system("clear") # Clears the screen
-        elif check == '5':
+        elif option == '5':
             with open('JSON/lexicon.json', 'r') as f: #calling lexicon.json for read and storing it into a dictionary
                 temp_dict = json.loads(f.read())
 
@@ -142,7 +142,7 @@ if __name__ == "__main__":
             r = input("Press enter to go back to the menu.")
             if r == "":
                 os.system("clear") # Clears the screen
-        elif check == '6':
+        elif option == '6':
             with open('JSON/lexicon.json', 'r') as f: #calling lexicon.json for read and storing it into a dictionary
                 temp_dict = json.loads(f.read())
 
@@ -160,11 +160,11 @@ if __name__ == "__main__":
             r = input("Press enter to go back to the menu.")
             if r == "":
                 os.system("clear") # Clears the screen
-        elif check == '7':
+        elif option == '7':
             os.system(exam_cmd)
             print("\nPress enter to go back to the menu.")
             r = input("")
             if r == "":
                 os.system("clear") # Clears the screen
-        elif check == '8':
+        elif option == '8':
             sys.exit()
