@@ -83,6 +83,8 @@ for word in EST:
 					HST_index = HST.index(Current_word_h) #only one instance
 					VG = NG #verb inflects for subject
 					if(Obj_exists):
+						if(HST[HST_index] =='ek'): #skip article
+							HST_index= HST_index+1
 						skipper=0
 						while(skipper<ADP_count): #to count adjectives before the object, adpositions
 							HST_index= HST_index+1
@@ -90,8 +92,7 @@ for word in EST:
 							if(HST[HST_index] == 'aur' or HST[HST_index] == 'or' or HST[HST_index] == 'aar' or HST[HST_index] == 'lekin' or HST[HST_index] == 'par'): #consecutive adjectives in Hindi may be interlocuted by 'and' and 'but'
 								HST_index= HST_index+1 #we have reached the last adjective
 						HST_index= HST_index+1 #We have reached the object in Hindi SOV if it exists
-						if(HST[HST_index] =='ek'): #skip article
-							HST_index= HST_index+1
+						
 					HST_index= HST_index+1 #We have reached the verb in Hindi SOV if object doesn't exist: SV, and also if it exists in SOV
 					
 					if(HST[HST_index] == 'ko'):
@@ -148,6 +149,8 @@ for word in EST:
 					HST_index = HST.index(Current_word_h) #only one instance
 					HST_index= HST_index+1 #We have reached the verb in Hindi SOV if object doesn't exist: SV, since there are no adverbs. Else we've reached object
 					if(Obj_exists):
+						if(HST[HST_index] =='ek'): #skip article
+							HST_index= HST_index+1
 						skipper=0
 						while(skipper<AD_count): #to count adjectives before the object, adpositions
 							HST_index= HST_index+1
@@ -155,8 +158,6 @@ for word in EST:
 							if(HST[HST_index] == 'aur' or HST[HST_index] == 'or' or HST[HST_index] == 'aar' or HST[HST_index] == 'lekin' or HST[HST_index] == 'par'): #consecutive adjectives in Hindi may be interlocuted by 'and' and 'but'
 								HST_index= HST_index+1 #we have reached the last adjective
 						HST_index= HST_index+1 #We have reached the object in Hindi SOV if it exists
-						if(HST[HST_index] =='ek'): #skip article
-							HST_index= HST_index+1
 						HST_index= HST_index+1 #We have reached the verb in Hindi SOV if object doesn't exist: SV, and also if it exists in SOV
 						if(HST[HST_index] == 'ko'):
 							HST_index= HST_index+1
