@@ -2,7 +2,7 @@
 
 """Musings with the Google Cloud Natural Language API syntax analysis"""
 
-import json
+import json, sys
 from google.oauth2 import service_account
 import googleapiclient.discovery
 

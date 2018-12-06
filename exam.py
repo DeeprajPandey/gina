@@ -2,7 +2,7 @@ import json
 from collections import OrderedDict
 
 lex_dict = OrderedDict()
-exam_question = input("\nEnter a word to check if Gina knows about it.\n")
+exam_question = input("\nEnter a word to check if Gina knows it.\n")
 with open('JSON/lexicon.json', 'r') as f: #calling lexicon.json for read and storing it into a dictionary
     lex_dict = json.loads(f.read())
 

@@ -10,24 +10,32 @@ if __name__ == "__main__":
     end_word_count = 0
     word_list = []
     exam_cmd = "python3 exam.py" # Moving it outside the loop, so that the user can directly access the exam without input
+    gen_rules = "python3 generate_rules.py"
     while True: # This loops till the user wants to exit the program
         os.system("clear") # Clears the screen
-        print("\n=====================================================================================================")
-        print("| Enter the corresponding number to choose an option from below.                                    |")
-        print("=====================================================================================================")
-        print("| 1. Teach Gina!                                                                                    |")
-        print("| 2. View the nouns that Gina knows.                                                                |")
-        print("| 3. View the verbs that Gina knows.                                                                |")
-        print("| 4. View the adjectives that Gina knows.                                                           |")
-        print("| 5. View the prepositions that Gina knows.                                                         |")
-        print("| 6. View the the pronouns that Gina knows.                                                         |")
-        print("| 7. Test Gina!                                                                                     |")
-        print("| 8. Exit the program.                                                                              |")
-        print("=====================================================================================================\n")
+        print("\n======================================================================================================")
+        print("| Enter the corresponding number to choose an option from below.                                     |")
+        print("======================================================================================================")
+        print("|  1. Generate syntax rules for your language.                                                       |")
+        print("|  2. Teach Gina!                                                                                    |")
+        print("|  3. View the nouns that Gina knows.                                                                |")
+        print("|  4. View the verbs that Gina knows.                                                                |")
+        print("|  5. View the adjectives that Gina knows.                                                           |")
+        print("|  6. View the prepositions that Gina knows.                                                         |")
+        print("|  7. View the the pronouns that Gina knows.                                                         |")
+        print("|  8. Test Gina!                                                                                     |")
+        print("|  9. View instructions for teaching Gina.                                                           |")
+        print("| 10. Exit the program.                                                                              |")
+        print("======================================================================================================\n")
         print("Your choice:", end = "")
         option = input(" ")
         os.system("clear") # Clears the screen
         if option == '1':
+            os.system(gen_rules)
+            r = input("Press enter to go back to the menu.")
+            if r == "":
+                os.system("clear") # Clears the screen
+        elif option == '2':
             # We don't need to ignore punctuations in the english input here, because when the API is called, the PUNCT tag is specifically skipped
             # in the rest of the python programs
             # We ask the user to input till they wish to stop. Also, after every input, we ask them if they wish to see the lexicon that Gina has developed
@@ -86,7 +94,7 @@ if __name__ == "__main__":
             r = input("\n")
             if r == "":
                 os.system("clear") # Clears the screen
-        elif option == '2':
+        elif option == '3':
             with open('JSON/lexicon.json', 'r') as f: #calling lexicon.json for read and storing it into a dictionary
                 temp_dict = json.loads(f.read())
 
@@ -100,7 +108,7 @@ if __name__ == "__main__":
             r = input("Press enter to go back to the menu.")
             if r == "":
                 os.system("clear") # Clears the screen
-        elif option == '3':
+        elif option == '4':
             with open('JSON/lexicon.json', 'r') as f: #calling lexicon.json for read and storing it into a dictionary
                 temp_dict = json.loads(f.read())
 
@@ -114,7 +122,7 @@ if __name__ == "__main__":
             r = input("Press enter to go back to the menu.")
             if r == "":
                 os.system("clear") # Clears the screen
-        elif option == '4':
+        elif option == '5':
             with open('JSON/lexicon.json', 'r') as f: #calling lexicon.json for read and storing it into a dictionary
                 temp_dict = json.loads(f.read())
 
@@ -128,7 +136,7 @@ if __name__ == "__main__":
             r = input("Press enter to go back to the menu.")
             if r == "":
                 os.system("clear") # Clears the screen
-        elif option == '5':
+        elif option == '6':
             with open('JSON/lexicon.json', 'r') as f: #calling lexicon.json for read and storing it into a dictionary
                 temp_dict = json.loads(f.read())
 
@@ -142,7 +150,7 @@ if __name__ == "__main__":
             r = input("Press enter to go back to the menu.")
             if r == "":
                 os.system("clear") # Clears the screen
-        elif option == '6':
+        elif option == '7':
             with open('JSON/lexicon.json', 'r') as f: #calling lexicon.json for read and storing it into a dictionary
                 temp_dict = json.loads(f.read())
 
@@ -160,11 +168,42 @@ if __name__ == "__main__":
             r = input("Press enter to go back to the menu.")
             if r == "":
                 os.system("clear") # Clears the screen
-        elif option == '7':
+        elif option == '8':
             os.system(exam_cmd)
             print("\nPress enter to go back to the menu.")
             r = input("")
             if r == "":
                 os.system("clear") # Clears the screen
-        elif option == '8':
+        elif option == '9':
+            print("--------------------------------------------------------------------------------------------------------------------------------------------")
+            print("| Instructions for teaching Gina                                                                                                           |")
+            print("--------------------------------------------------------------------------------------------------------------------------------------------")
+            print("|  1. (!)Conjunctions:                                                                                                                     |")
+            print("|        i. May be used as connectors of two or more complete sentences,                                                                   |")
+            print("|        ii. May be used between adjectives.                                                                                               |")
+            print("|        iii. May not be used assuming a trace/parallelism;                                                                                |")
+            print("|             e.g. I like the sea and the sun; say rather: I like the sea and I like the sun.                                              |")
+            print("|  2. No plural nouns. The sentence, therefore, cannot be ‘The sky and the ocean are blue’.                                                |")
+            print("|     This is in essence a plural noun! Simple test: check the verb of the sentence                                                        |")
+            print("|  3. (!)No compound/non-singleton noun phrases: these include nouns like the cat’s mother, and also my book.                              |")
+            print("|  4. Only simple presenttense usage: e.g. I eat àmain khaati hoon, but not I am eating -> main kha rahi hoon.                             |")
+            print("|     For example:                                                                                                                         |")
+            print("|     I play -> main khelta hoon                                                                                                           |")
+            print("|     She runs -> vah daudti hai                                                                                                           |")
+            print("|  5. (!)No English phrasal verbs.                                                                                                         |")
+            print("|     A phrasal verb is any verb with another element, typically a preposition: ‘see to’ or an adverb ‘break down’ or both ‘look down on’. |")
+            print("|     This also excludes negations of verbs: I do not like you; The sky is not blue, etc. are no tallowed.                                 |")
+            print("|  6. English verbs with more than two arguments. For example, Iexplained the problem to you.                                              |")
+            print("|  7. (!)Enter jammed Hindi phrasal verbs (in case of an English singleton verb that translates into a phrasal verb in Hindi).             |")
+            print("|     I love the tree -> main ped ko pyaar_karti hoon.                                                                                     |")
+            print("|  8. (!)No English compound adpositions: these are rare in any case, but do exist: This is over and above what Gina can deal with.        |")
+            print("|  9. (!)Enter jammed Hindi compound adpositions, if any.                                                                                  |")
+            print("| 10. Consistent spelling in Hindi and English                                                                                             |")
+            print("| 11. Adherence to the hardcoded spellings of pronouns; hardcoded verbs is -> hai, am ->hoon                                               |")
+            print("| 12. (!)No usage of honorific forms in Hindi: i.e. all sentences must be in the register of the least ‘respectful’ – tu, vah, usko, hai   |")
+            print("| 13. No imperatives, questions or fragmented sentences.                                                                                   |")
+            print("| 14. In general, simple sentences involving simple units of either language!                                                              |")
+            print("--------------------------------------------------------------------------------------------------------------------------------------------")
+
+        elif option == '10':
             sys.exit()
