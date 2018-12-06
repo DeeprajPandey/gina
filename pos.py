@@ -2,7 +2,8 @@
 
 """Musings with the Google Cloud Natural Language API syntax analysis"""
 
-import json, sys
+import json
+from google.oauth2 import service_account
 import googleapiclient.discovery
 
 text = ''#figured out a way to take a multi-word input from the command line and pass it to the python script
@@ -20,7 +21,8 @@ body = {
 	'encoding_type': 'UTF32'
 }
 
-service = googleapiclient.discovery.build('language', 'v1')
+credentials = service_account.Credentials.from_service_account_file('file.json')
+service = googleapiclient.discovery.build('language', 'v1', credentials=credentials)
 
 request = service.documents().analyzeSyntax(body=body)
 response = request.execute()

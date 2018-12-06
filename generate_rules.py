@@ -13,7 +13,7 @@ def hamming_distance(s1, s2):
         if c != s1[i]:
             distance += 1
 
-return distance
+    return distance
 
 # sherlock and watson are the 2 strings we will be dealing with today
 def jaro_winkler_distance(sherlock, watson):
@@ -37,8 +37,8 @@ def jaro_winkler_distance(sherlock, watson):
     watson_flags = [False]*watson_len
 
 
-# While searching only within the search_range, count & flag matched pairs
-common_chars = 0
+    # While searching only within the search_range, count & flag matched pairs
+    common_chars = 0
     for i, sherlock_ch in enumerate(sherlock):
         low = i - search_range if i > search_range else 0
         hi = i + search_range if i + search_range < watson_len else watson_len - 1
@@ -51,9 +51,9 @@ common_chars = 0
                 # compare the next character in sherlock with the range in watson
                 break
 
-# If no characters match, m=0
-if not common_chars:
-    return 0.0
+    # If no characters match, m=0
+    if not common_chars:
+        return 0.0
     
     # Count transpositions
     # Note: only check order of matched characters.
@@ -79,18 +79,17 @@ if not common_chars:
     weight = ((common_chars/sherlock_len + common_chars/watson_len +
                (common_chars-trans_count) / common_chars)) / 3
         
-               # Winkler modification: continue to boost if strings are similar
-               if weight > 0.7 and sherlock_len > 3 and watson_len > 3:
-                   # adjust for up to first 4 chars in common
-                   j = min(min_len, 4)
-                   i = 0
-                       while i < j and sherlock[i] == watson[i] and sherlock[i]:
-                           i += 1
-                               if i:
-                                   # The scaling factor, p, is usually 0.1
-                                   weight += i * 0.15 * (1.0 - weight)
-
-return weight
+    # Winkler modification: continue to boost if strings are similar
+    if weight > 0.7 and sherlock_len > 3 and watson_len > 3:
+        # adjust for up to first 4 chars in common
+        j = min(min_len, 4)
+        i = 0
+        while i < j and sherlock[i] == watson[i] and sherlock[i]:
+            i += 1
+            if i:
+                # The scaling factor, p, is usually 0.1
+                weight += i * 0.15 * (1.0 - weight)
+    return weight
 
 
 def print_syntax_rules(HN_tokens):
@@ -131,16 +130,20 @@ def print_syntax_rules(HN_tokens):
     for word in HN_tokens[1]:
         if jaro_winkler_distance(noun_p, word.lower()) >= 0.9 and hamming_distance(noun_p, word.lower()) <= 1:
             # The noun must have changed it's position as preposition might come with morphemes
-            new_noun_index_p = np.where(word == HN_tokens[1])[0][0]
+            new_noun1_index_p = np.where(word == HN_tokens[1])[0][0]
+    for word in HN_tokens[3]:
+        if jaro_winkler_distance(noun_p, word.lower()) >= 0.9 and hamming_distance(noun_p, word.lower()) <= 1:
+            # The noun must have changed it's position as preposition might come with morphemes
+            new_noun2_index_p = np.where(word == HN_tokens[1])[0][0]
 
-mid1 = len(HN_tokens[1])/2
-mid2 = len(HN_tokens[3])/2
-if (new_noun_index_p < mid1 and new_noun_index_p < mid2):
-    print("\nprepositions come after Nouns (postpositions),")
-    elif (new_noun_index_p >= mid1 and new_noun_index_p >= mid2):
-        print("\nprepositions come before Nouns,")
-else:
-    print("PN/NP couldn't be determined with the data currently available.")
+    mid1 = len(HN_tokens[1])/2
+    mid2 = len(HN_tokens[3])/2
+    if (new_noun1_index_p < mid1 and new_noun2_index_p < mid2):
+        print("\nprepositions come after Nouns (postpositions),")
+    elif (new_noun1_index_p >= mid1 and new_noun2_index_p >= mid2):
+            print("\nprepositions come before Nouns,")
+    else:
+        print("PN/NP couldn't be determined with the data currently available.")
     
     # Adpositions change in third and seventh
     # ad_pos = np.where(HN_tokens[2] != HN_tokens[6])[0][0]
@@ -161,6 +164,8 @@ else:
         print("and adjectives come after nouns.")
     else:
         print("AN/NA couldn't be determined with the data currently available.")
+# End of the syntax_rules function
+
 
 # Subject changes in 0,4 (use noun from 4 for AN)
 # Verb changes in 0,7
@@ -189,13 +194,16 @@ if __name__ == '__main__':
     #HN_Sentences = ["tabari kela khaaye se", "kele ke bagalma", "chhoti makhi", "kele ke upar", "makhi kela khaaye se", "tabari makhi khaaye se", "tabari kela feke hai", "tabari kela feke hai", "dukhi tabari"]
     # Punjabi
     #HN_Sentences = ["Kudi kela khandi hai.", "kele de kol?", "chhoti makkhi.", "Kele de upar?", "Makkhi kela khandi hai.", "Kudi makkhi khandi hai.", "udas makkhi.", "Kudi kela sutt-di hai.", "Udas Kudi."]
-    
+    # Kashmiri
+    #HN_Sentences = ["koor chhe kel khewan.", "kelas nish.", "laket mechh.", "kelas peyth.", "mechh chhe kel khewan.", "koor chhe mechh khewan.", "udaas mechh.", "koor chhe kel chhakan.", "udaas koor."]
+
     for sentence in EN_Sentences:
-        print("Sentence in English: " + sentence)
-        h_input = input("Enter translation in your language: ")
-        HN_Sentences.append(h_input)
+       print("Sentence in English: " + sentence)
+       h_input = input("Enter translation in your language: ")
+       HN_Sentences.append(h_input)
+    
     # Tokenise the inputs. HN_tokens = [['hello','world']['sentence','two']]
-    for h_st in HN_Sentences: 
+    for h_st in HN_Sentences:
         tokenize = np.array(regex.sub('', h_st).split())
         HN_tokens.append(tokenize)
 
