@@ -157,7 +157,7 @@ for word in EST:
 							skipper = skipper+1
 							if(HST[HST_index] == 'aur' or HST[HST_index] == 'or' or HST[HST_index] == 'aar' or HST[HST_index] == 'lekin' or HST[HST_index] == 'par'): #consecutive adjectives in Hindi may be interlocuted by 'and' and 'but'
 								HST_index= HST_index+1 #we have reached the last adjective
-						HST_index= HST_index+1 #We have reached the object in Hindi SOV if it exists
+						#HST_index= HST_index+1 #We have reached the object in Hindi SOV if it exists
 						HST_index= HST_index+1 #We have reached the verb in Hindi SOV if object doesn't exist: SV, and also if it exists in SOV
 						if(HST[HST_index] == 'ko'):
 							HST_index= HST_index+1
