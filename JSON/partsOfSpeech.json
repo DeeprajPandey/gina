@@ -2,7 +2,7 @@
   "sentences": [
     {
       "text": {
-        "content": "The cat chews the banana",
+        "content": "The sky is blue",
         "beginOffset": 0
       }
     }
@@ -35,7 +35,7 @@
     },
     {
       "text": {
-        "content": "cat",
+        "content": "sky",
         "beginOffset": 4
       },
       "partOfSpeech": {
@@ -56,11 +56,11 @@
         "headTokenIndex": 2,
         "label": "NSUBJ"
       },
-      "lemma": "cat"
+      "lemma": "sky"
     },
     {
       "text": {
-        "content": "chews",
+        "content": "is",
         "beginOffset": 8
       },
       "partOfSpeech": {
@@ -70,7 +70,7 @@
         "form": "FORM_UNKNOWN",
         "gender": "GENDER_UNKNOWN",
         "mood": "INDICATIVE",
-        "number": "PLURAL",
+        "number": "SINGULAR",
         "person": "THIRD",
         "proper": "PROPER_UNKNOWN",
         "reciprocity": "RECIPROCITY_UNKNOWN",
@@ -81,15 +81,15 @@
         "headTokenIndex": 2,
         "label": "ROOT"
       },
-      "lemma": "chew"
+      "lemma": "be"
     },
     {
       "text": {
-        "content": "the",
-        "beginOffset": 14
+        "content": "blue",
+        "beginOffset": 11
       },
       "partOfSpeech": {
-        "tag": "DET",
+        "tag": "ADJ",
         "aspect": "ASPECT_UNKNOWN",
         "case": "CASE_UNKNOWN",
         "form": "FORM_UNKNOWN",
@@ -103,35 +103,10 @@
         "voice": "VOICE_UNKNOWN"
       },
       "dependencyEdge": {
-        "headTokenIndex": 4,
-        "label": "DET"
-      },
-      "lemma": "the"
-    },
-    {
-      "text": {
-        "content": "banana",
-        "beginOffset": 18
-      },
-      "partOfSpeech": {
-        "tag": "NOUN",
-        "aspect": "ASPECT_UNKNOWN",
-        "case": "CASE_UNKNOWN",
-        "form": "FORM_UNKNOWN",
-        "gender": "GENDER_UNKNOWN",
-        "mood": "MOOD_UNKNOWN",
-        "number": "SINGULAR",
-        "person": "PERSON_UNKNOWN",
-        "proper": "PROPER_UNKNOWN",
-        "reciprocity": "RECIPROCITY_UNKNOWN",
-        "tense": "TENSE_UNKNOWN",
-        "voice": "VOICE_UNKNOWN"
-      },
-      "dependencyEdge": {
         "headTokenIndex": 2,
-        "label": "DOBJ"
+        "label": "ACOMP"
       },
-      "lemma": "banana"
+      "lemma": "blue"
     }
   ],
   "language": "en"

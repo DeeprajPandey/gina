@@ -6,14 +6,9 @@
       "billi"
     ],
     "dog": [
-      "",
-      "U",
+      "kutta",
+      "M",
       "kutte"
-    ],
-    "runs": [
-      "billi",
-      "F",
-      "billi"
     ],
     "woman": [
       "aurat",
@@ -27,7 +22,7 @@
     ],
     "sky": [
       "aasmaan",
-      "U",
+      "M",
       "aasmaan"
     ],
     "table": [
@@ -38,7 +33,7 @@
     "boy": [
       "ladka",
       "M",
-      ""
+      "ladke"
     ],
     "Reuel": [
       "Reuel",
@@ -52,7 +47,7 @@
     ],
     "part": [
       "hissa",
-      "U",
+      "M",
       ""
     ],
     "bird": [
@@ -62,18 +57,8 @@
     ],
     "plane": [
       "jahaaz",
-      "U",
-      "jahaaz"
-    ],
-    "eats": [
-      "billi",
       "F",
-      "billi"
-    ],
-    "pink": [
-      "gulaabi",
-      "U",
-      "gulaabi"
+      "jahaaz"
     ],
     "life": [
       "zindagi",
@@ -82,7 +67,7 @@
     ],
     "chair": [
       "kursi",
-      "U",
+      "F",
       "kursi"
     ],
     "teacher": [
@@ -100,15 +85,10 @@
       "U",
       "chai"
     ],
-    "flows": [
-      "paani",
-      "U",
-      "paani"
-    ],
     "bed": [
-      "",
-      "U",
-      "bistar"
+      "billi",
+      "F",
+      "billi"
     ],
     "ta": [
       "ta",
@@ -125,20 +105,20 @@
       "F",
       "botal"
     ],
-    "fills": [
-      "botal",
-      "F",
-      "botal"
-    ],
     "movie": [
       "movie",
-      "U",
+      "F",
       "movie"
     ],
     "banana": [
       "",
       "U",
       "kele"
+    ],
+    "irony": [
+      "vidambana",
+      "M",
+      ""
     ]
   },
   "verbs": {
@@ -178,7 +158,7 @@
       "Third Person"
     ],
     "like": [
-      "",
+      "pasandkarta",
       "pasandkarti",
       "First, Second Person"
     ],
@@ -222,24 +202,39 @@
       "soti",
       "First, Second Person"
     ],
-    "sleeps": [
-      "sota",
-      "",
-      "Third Person"
-    ],
     "gives": [
       "deta",
-      "",
+      "deti",
       "Third Person"
     ],
     "go": [
-      "",
+      "jaata",
       "jaati",
       "First, Second Person"
     ],
     "chews": [
       "",
       "chabaati",
+      "Third Person"
+    ],
+    "plays": [
+      "",
+      "khelti",
+      "Third Person"
+    ],
+    "sleeps": [
+      "sota",
+      "soti",
+      "Third Person"
+    ],
+    "eat": [
+      "",
+      "khaati",
+      "First, Second Person"
+    ],
+    "stays": [
+      "",
+      "rehti",
       "Third Person"
     ]
   },
@@ -338,6 +333,16 @@
       "takatvar",
       "takatvar",
       "takatvar"
+    ],
+    "flat": [
+      "",
+      "chapti",
+      ""
+    ],
+    "dead": [
+      "",
+      "",
+      "marehue"
     ]
   },
   "adpositions": {
