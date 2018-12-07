@@ -140,12 +140,12 @@ if __name__ == "__main__":
             with open('JSON/lexicon.json', 'r') as f: #calling lexicon.json for read and storing it into a dictionary
                 temp_dict = json.loads(f.read())
 
-            print("\n-----------------------------")
-            print("|  {:<12} {:<10}  |".format('Preposition','Postposition'))
-            print("-----------------------------")
+            print("\n----------------------------------")
+            print("|  {:<12} {:<15}  |".format('Preposition','Postposition'))
+            print("----------------------------------")
             for prep in temp_dict["adpositions"]:
-                print("|  {:<12} {:<10}  |".format(prep, temp_dict["adpositions"][prep]))
-            print("-----------------------------\n")
+                print("|  {:<12} {:<15}  |".format(prep, temp_dict["adpositions"][prep]))
+            print("----------------------------------\n")
 
             r = input("Press enter to go back to the menu.")
             if r == "":
