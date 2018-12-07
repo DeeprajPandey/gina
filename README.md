@@ -4,12 +4,16 @@
 Gina is a bot in the most rudimentary form who is trying to use her knowledge in English to learn a new language that *you* know that *you* are going to teach her.
 How? Fret not. She is going to guide you throughout.
 
-Gina uses Google Natural Language API for syntax analysis. She tries to extrapolate her reasoning from how she learned English to the new language (which could be completely imaginary, as long as you set and follow the basic rules of a language).
+There are two parts to the program. In the first part, she gives you a series of simple sentences in English which you have to translate into a language of your choice. She assumes you are correct and based on your inputs, she will display a bunch of syntax rules of the language you used. She knows that languages are vast and complicated and they often do not follow rigid rules which is why you might notice some discrepancies here and there but that is still rare.
+
+The second part of the program is more specific. Using the base register of English as a point of reference, she learns verbs, nouns, adjectives, and adpositions. She begins with an initial state of the Hindi lexicon in each of these syntactic categories, and given an English word and its translation, she learns the unfamiliar words and keeps building her lexicon.
+
+Gina uses the Cloud Natural Language API by Google for syntax analysis of the English sentences she encounters.
 
 ## Setup
 
 ### Authentication
-Gina is still under development. You would need to setup credentials from your Google Cloud Platform to run the scripts.
+Gina is still under development. You would need to setup credentials from an NLP API enabled account on GCP to get Gina up and running on your device.
 
 ### Install Dependencies
 1. Install [pip](https://pip.pypa.io) and [virtualenv](https://virtualenv.pypa.io/)
@@ -34,6 +38,10 @@ For generating syntax rules for any language, Gina will give you a paragraph to 
 ```sh
   $ python interface.py
 ```
+
+### To Do (Early 2019)
+- [ ] Build a web interface for Gina
+- [ ] Move to a database
 
 ### License
 CC BY-NC 4.0 International
