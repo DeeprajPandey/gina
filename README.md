@@ -1,7 +1,7 @@
 # Gina
 #### *isi ka naam hai*
 
-Gina is a bot in the most rudimentary form who is trying to use her knowledge in English to learna new language that *you* know that *you* are going to teach her.
+Gina is a bot in the most rudimentary form who is trying to use her knowledge in English to learn a new language that *you* know that *you* are going to teach her.
 How? Fret not. She is going to guide you throughout.
 
 Gina uses Google Natural Language API for syntax analysis. She tries to extrapolate her reasoning from how she learned English to the new language (which could be completely imaginary, as long as you set and follow the basic rules of a language).
