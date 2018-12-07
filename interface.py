@@ -46,7 +46,7 @@ if __name__ == "__main__":
                 for key in lex_dict[category]:
                     orig_words = orig_words + 1
 
-            print("Give Gina an English sentence:\n")
+            print("\nGive Gina an English sentence:", end = " ")
             enInput = input("")
             regex = re.compile('[%s]' % re.escape(string.punctuation)) # Using regex to ignore punctuation in the text input
             word_list = (regex.sub('', enInput)).split() # Store the non-punctuated english sentence's words in a list
@@ -55,7 +55,7 @@ if __name__ == "__main__":
                     for indiv in lex_dict[categ]:
                         if elem == indiv:
                             word_count = word_count + 1
-            print("\nGive Gina its Hindi translation:\n")
+            print("Give Gina its Hindi translation:", end = " ")
             h_Input = input("")
             hInput = regex.sub('', h_Input)
             pos_cmd = "python3 pos.py %s" % enInput
