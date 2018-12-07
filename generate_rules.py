@@ -93,6 +93,7 @@ def jaro_winkler_distance(sherlock, watson):
 
 
 def print_syntax_rules(LN_Tokens):
+    # Print the word order of this language
     SVO = {}
     # [0][0] to flatten the array into an integers
     # Subject changes in sentence 0 and 4
@@ -105,14 +106,14 @@ def print_syntax_rules(LN_Tokens):
     # Verb in 0 and 7
     v_change = np.where(LN_Tokens[0] != LN_Tokens[7])
     if v_change[0].size == 0:
-        SVO[22] = 'Position of the verb could not be determined from input.'
+        SVO[21] = 'Position of the verb could not be determined from input.'
     else:
         verb_pos = v_change[0][0]
     
     # Object in third and fourth
     o_change = np.where(LN_Tokens[0] != LN_Tokens[5])
     if o_change[0].size == 0:
-        SVO[21] = 'Position of the object could not be determined from input.'
+        SVO[22] = 'Position of the object could not be determined from input.'
     else:
         object_pos = o_change[0][0]
         arr1 = []
@@ -136,6 +137,8 @@ def print_syntax_rules(LN_Tokens):
     for key in sorted(SVO.keys()):
         print('%s' % SVO[key], end = ', ')
 
+    # Print the position of preposition wrt nouns
+    
     # Get the noun that is constant in the preposition case
     # from when we parsed object
     if o_change[0].size != 0:
@@ -144,30 +147,31 @@ def print_syntax_rules(LN_Tokens):
         else:
             noun_p = LN_Tokens[0][object_pos]
 
-        new_noun1_index_p = -1
+        largest = -1
         for word in LN_Tokens[1]:
-            if jaro_winkler_distance(noun_p, word) >= 0.9 and hamming_distance(noun_p, word) <= 1:
+            # Since the JW distance will always be between 0 and 1,
+            # this will ensure we are looking at all the distances
+            # Note: larger the JW distance, closer are the strings
+            dist = jaro_winkler_distance(noun_p, word)
+            if dist > largest:
+                largest = dist
                 # The noun must have changed it's position as preposition might come with morphemes
                 new_noun1_index_p = np.where(word == LN_Tokens[1])[0][0]
 
-        new_noun2_index_p = -1
+        largest = -1
         for word in LN_Tokens[3]:
-            if jaro_winkler_distance(noun_p, word) >= 0.9 and hamming_distance(noun_p, word) <= 1:
+            # Since the JW distance will always be between 0 and 1,
+            # this will ensure we are looking at all the distances
+            # Note: larger the JW distance, closer are the strings
+            dist = jaro_winkler_distance(noun_p, word)
+            if dist > largest:
+                largest = dist
                 # The noun must have changed it's position as preposition might come with morphemes
                 new_noun2_index_p = np.where(word == LN_Tokens[3])[0][0]
 
-        # This will be true when noun inflection is beyond the scope of jaro winkler threshhold
-        # e.g: In Kannada, 'balehannannu' is banana as an object
-        # whereas, 'balehannina' is banana as a noun with a preposition. The distance algos will fail here.
-        if new_noun1_index_p == -1 or new_noun2_index_p == -1:
-            temp_lst = list(set(LN_Tokens[1]).intersection(LN_Tokens[3]))
-            temp_lst.sort(key=len, reverse=True)
-            # Assuming the longest string will be the noun
-            nn = temp_lst[0]
-            new_noun1_index_p = np.where(nn == LN_Tokens[1])[0][0]
-            new_noun2_index_p = np.where(nn == LN_Tokens[3])[0][0]
-
+    # Faulty user input - exact input for 0 and 5
     else:
+        # Whatever remains the same is noun - fail safe
         temp_lst = list(set(LN_Tokens[1]).intersection(LN_Tokens[3]))
         temp_lst.sort(key=len, reverse=True)
         # Assuming the longest string will be the noun
@@ -175,44 +179,53 @@ def print_syntax_rules(LN_Tokens):
         new_noun1_index_p = np.where(nn == LN_Tokens[1])[0][0]
         new_noun2_index_p = np.where(nn == LN_Tokens[3])[0][0]
         
-        
+    
     mid1 = len(LN_Tokens[1])/2
     mid2 = len(LN_Tokens[3])/2
-    if (new_noun1_index_p <= mid1 and new_noun2_index_p <= mid2):
+    if (new_noun1_index_p < mid1 and new_noun2_index_p < mid2):
         print("\nyour prepositions come after nouns (postpositions),")
-    elif (new_noun1_index_p > mid1 and new_noun2_index_p > mid2):
+    # >= since mid/2 and not mid/2-1
+    # Assuming max difference of 1 between num of elements in sen 1 and sen 3
+    elif (new_noun1_index_p >= mid1 and new_noun2_index_p >= mid2):
         print("\nyour prepositions come before nouns,")
     else:
         print("PN/NP couldn't be determined with the data currently available.")
     
-
+    
+    
+    # Print the adjective-noun rule
     if sub_change[0].size != 0:
         # Get the unchanging noun
         noun_ad = LN_Tokens[4][sub_pos]
         
-        # Adpositions change in third and seventh sentence
-        for word in LN_Tokens[2]:
-            if jaro_winkler_distance(noun_ad, word) >= 0.9 and hamming_distance(noun_ad, word) <= 1:
-                new_noun1_index_a = np.where(word == LN_Tokens[2])[0][0]
+        # Adpositions change in seventh and ninth sentence
+        largest = -1
         for word in LN_Tokens[6]:
-            if jaro_winkler_distance(noun_ad, word) >= 0.9 and hamming_distance(noun_ad, word) <= 1:
-                new_noun2_index_a = np.where(word == LN_Tokens[6])[0][0]
+            # Since the JW distance will always be between 0 and 1,
+            # this will ensure we are looking at all the distances
+            # Note: larger the JW distance, closer are the strings
+            dist = jaro_winkler_distance(noun_ad, word)
+            if dist > largest:
+                largest = dist
+                new_noun1_index_a = np.where(word == LN_Tokens[6])[0][0]
+        # Noun changes in seventh and ninth
+        new_noun2_index_a = np.where(LN_Tokens[6] != LN_Tokens[8])[0][0]
     
-    # Faulty user input - subject does not change.
+    # Faulty user input - subject does not change. Have to resort to basics
     else:
-        temp_lst = list(set(LN_Tokens[1]).intersection(LN_Tokens[3]))
-        temp_lst.sort(key=len, reverse=True)
-        # Assuming the longest string will be the noun
-        nn = temp_lst[0]
-        new_noun1_index_a = np.where(nn == LN_Tokens[2])[0][0]
-        new_noun2_index_a = np.where(nn == LN_Tokens[6])[0][0]
+        # Noun changes in seventh and ninth sentence
+        new_noun1_index_a = new_noun2_index_a = np.where(LN_Tokens[6] != LN_Tokens[8])[0][0]
 
-    mid1 = len(LN_Tokens[2])/2
-    mid2 = len(LN_Tokens[6])/2
-    if (new_noun1_index_a <= mid1 and new_noun2_index_a <= mid2):
-        print("and adjectives come before nouns.")
-    elif (new_noun1_index_a > mid1 and new_noun2_index_a > mid2):
+    # Whatever remains the same is the adjective
+    temp_lst = list(set(LN_Tokens[6]).intersection(LN_Tokens[8]))
+    temp_lst.sort(key=len, reverse=True)
+    # Assuming the longest string will be the adj
+    ad = temp_lst[0]
+    adj_pos = np.where(ad == LN_Tokens[6])[0][0]
+    if (new_noun1_index_a < adj_pos and new_noun2_index_a < adj_pos):
         print("and adjectives come after nouns.")
+    elif (new_noun1_index_a > adj_pos and new_noun2_index_a > adj_pos):
+        print("and adjectives come before nouns.")
     else:
         print("AN/NA couldn't be determined with the data currently available.")
 
@@ -223,7 +236,7 @@ def print_syntax_rules(LN_Tokens):
 # Verb changes in 0,7
 # Object changes in 0,5 (use noun from 0 for PN)
 # Preposition changes in 1,3
-# Adjective changes in 2,6
+# Adjective changes in 6, 8
 EN_Sentences = ["The girl eats the banana.", "Near the banana?", "The small fly.", "On top of the banana?", "The fly eats the banana.", "The girl eats the fly.", "The sad fly.", "The girl throws the banana.", "The sad girl."]
 LN_Sentences = []
 LN_Tokens = []
@@ -233,7 +246,7 @@ regex = re.compile('[%s]' % re.escape(string.punctuation))
 # Get the user translated inputs if the program is run explicitly
 if __name__ == '__main__':
     # Hindi
-    #LN_Sentences = ["Ladki kela khaati hai.", "Kele ke paas?", "Chhoti makhi.", "Kele ke upar.", "Makhi kela khaati hai.", "Makhi Kela khaati hai.", "Dukhi makhi.", "Ladki kela fenkti hai.", "Dukhi ladki."]
+    #LN_Sentences = ["Ladki kela khaati hai.", "Kele ke paas?", "Chhoti makhi.", "Kele ke upar.", "Makhi kela khaati hai.", "Ladki makhi khaati hai.", "Dukhi makhi.", "Ladki kela fenkti hai.", "Dukhi ladki."]
     # Odia
     #LN_Sentences = ["Jhia ta kadali khae.", "Kadali pakhare?", "Chhota machhi.", "Kadali upare?", "Machhi ta kadali khae.", "Jhia ta machhi khae.", "Dukhi machhi.", "Jhia ta kadali phopade.", "Dukhi jhia."]
     # Bengali
@@ -243,18 +256,18 @@ if __name__ == '__main__':
     # Spanish
     #LN_Sentences = ["La chica come el platano", "Cerca del platano?", "Una pequena mosca", "Encima del platano", "La mosca come el platano", "La chica come la mosca", "La mosca triste", "La chica lanza el platano", "La chica triste"]
     # Marwari
-    #LN_Sentences = ["tabari kela khaaye se", "kele ke bagalma", "chhoti makhi", "kele ke upar", "makhi kela khaaye se", "tabari makhi khaaye se", "tabari kela feke hai", "tabari kela feke hai", "dukhi tabari"]
+    #LN_Sentences = ["tabari kela khaaye se", "kele ke bagalma", "chhoti makhi", "kele ke upar", "makhi kela khaaye se", "tabari makhi khaaye se", "dukhi makhi", "tabari kela feke hai", "dukhi tabari"]
     # Punjabi
     #LN_Sentences = ["Kudi kela khandi hai.", "kele de kol?", "chhoti makkhi.", "Kele de upar?", "Makkhi kela khandi hai.", "Kudi makkhi khandi hai.", "udas makkhi.", "Kudi kela sutt-di hai.", "Udas Kudi."]
     # Kannada
-    LN_Sentences = ["hudugi balehannannu tintale.", "balehannina hatra?", "chikka nona.", "balehannina mele?", "nona balehannannu tinnatte.", "hudugi nonavannu tintale.", "duhkhi nona.", "hudugi balehannannu esitale.", "duhkhi hudugi."]
+    #LN_Sentences = ["hudugi balehannannu tintale.", "balehannina hatra?", "chikka nona.", "balehannina mele?", "nona balehannannu tinnatte.", "hudugi nonavannu tintale.", "duhkhi nona.", "hudugi balehannannu esitale.", "duhkhi hudugi."]
     # Kashmiri
     #LN_Sentences = ["koor chhe kel khewan.", "kelas nish.", "laket mechh.", "kelas peyth.", "mechh chhe kel khewan.", "koor chhe mechh khewan.", "udaas mechh.", "koor chhe kel chhakan.", "udaas koor."]
     
-    #    for sentence in EN_Sentences:
-    #       print("Sentence in English: " + sentence)
-    #       h_input = input("Enter translation in your language: ")
-    #       LN_Sentences.append(h_input)
+    for sentence in EN_Sentences:
+       print("Sentence in English: " + sentence)
+       h_input = input("Enter translation in your language: ")
+       LN_Sentences.append(h_input)
     
     # Tokenise the inputs. LN_Tokens = [['hello','world']['sentence','two']]
     for h_st in LN_Sentences:
