@@ -23,6 +23,7 @@ Pronoun_Lexicon = lexicon_dict['pronouns'] #Print this and provide spelling to u
 #EST = [['The', 'DET'], ['you', 'PRON'],['write', 'VERB'], ['on', 'ADP'], ['big', 'ADJ'], ['and', 'CONJ'],['fat', 'ADJ'], ['cat', 'NOUN']]
 
 #EST = [['I', 'PRON'], ['eat', 'VERB'], ['a', 'DET'], ['tree', 'NOUN']]
+# Part III - code for reading from partsOfSpeech.json and creating the nested list, EST done by Abhinav Masalia
 EST=[]
 with open('JSON/partsOfSpeech.json', 'r') as f: #calling partsOfSpeech.json for read and storing it into a dictionary
     pos_dict = json.loads(f.read())
@@ -54,7 +55,7 @@ for word in EST:
 		G='' #grammatical gender
 		search_index = index -1
 		updated = False
-		
+
 		while(search_index > -1 and (updated==False or (Noun_Lexicon[word[0]][0]=='' or Noun_Lexicon[word[0]][1]=='U' or Noun_Lexicon[word[0]][2]==''))): #Going leftwards:
 			if(word[0] in Noun_Lexicon):
 				Saved_Nominative_Inflection = Noun_Lexicon[word[0]][0]
@@ -144,7 +145,7 @@ for word in EST:
 				HST_index = 0
 				found =False
 				if(index!=EST_size-1): #if there is anything after the object- this is admissible because no adverbs
-					noun_phrase_present=True 
+					noun_phrase_present=True
 				Current_word_h = ''
 				for Hindi_word in HST:
 					if(Hindi_word == Hindi_F or Hindi_word == Hindi_M):
@@ -180,7 +181,7 @@ for word in EST:
 				HST_index = 0
 				found =False
 				if(index!=EST_size-1): #if there is anything after the object- this is admissible because no adverbs
-					noun_phrase_present=True 
+					noun_phrase_present=True
 				Current_word_h = ''
 				for Hindi_word in HST:
 					if(Hindi_word == Hindi_SN):
@@ -214,7 +215,7 @@ for word in EST:
 					if(Saved_Gender=='F' or (not H_noun.endswith('e') and not H_noun.endswith('a'))):
 						Noun_Lexicon.update({word[0]: [H_noun, Saved_Gender, H_noun]}) #nominative, accusative same for male nouns not ending in 'a', all female nouns. Gender still unknown
 						updated = True
-					
+
 			if(Current_word_tag=='PRON' and Current_word in Pronoun_Lexicon):
 				Hindi_SN = Pronoun_Lexicon[Current_word] #has to be nominative inflection: Hindi_SN: subject noun
 			#	print(Hindi_M)
@@ -223,7 +224,7 @@ for word in EST:
 				HST_index = 0
 				found =False
 				if(index!=EST_size-1): #if there is anything after the object- this is admissible because no adverbs
-					noun_phrase_present=True 
+					noun_phrase_present=True
 				Current_word_h = ''
 				for Hindi_word in HST:
 					if(Hindi_word == Hindi_SN):
@@ -312,7 +313,7 @@ for word in EST:
 					if(G=='F' or (not H_noun.endswith('e') and not H_noun.endswith('a'))):
 						Noun_Lexicon.update({word[0]: [H_noun, G, H_noun]}) #nominative, accusative same for male nouns not ending in 'a'; nominative, accusative same for female nouns
 						updated = True
-						
+
 			if(Current_word_tag=='NOUN' and Current_word in Noun_Lexicon):
 				Hindi_ON = Noun_Lexicon[Current_word][2] #has to be accusative inflection: Hindi_ON: subject noun
 			#	print(Hindi_M)

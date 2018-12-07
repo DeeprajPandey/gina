@@ -1,6 +1,6 @@
 # Gina
 #### *isi ka naam hai*
-  
+
 Gina is a bot in the most rudimentary form who is trying to use her knowledge in English to learna new language that *you* know that *you* are going to teach her.
 How? Fret not. She is going to guide you throughout.
 
@@ -30,11 +30,7 @@ If you're on Windows, you may have to specify the full path to your python insta
 > ```
 
 ### Run
-Gina will give you a paragraph to translate. Do this very literally, without taking any meaning away from the sentences and she will show the syntax rules for the language you are translating into.
-```sh
-  $ python generate_rules.py
-```
-
+For generating syntax rules for any language, Gina will give you a paragraph to translate. Do this very literally, without taking any meaning away from the sentences and she will show the syntax rules for the language you are translating into.
 ```sh
   $ python interface.py
 ```

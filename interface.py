@@ -1,3 +1,4 @@
+# Code written by Abhinav Masalia
 import os, re, string, json, sys
 from collections import OrderedDict
 
@@ -22,7 +23,7 @@ if __name__ == "__main__":
         print("|  4. View the verbs that Gina knows.                                                                |")
         print("|  5. View the adjectives that Gina knows.                                                           |")
         print("|  6. View the prepositions that Gina knows.                                                         |")
-        print("|  7. View the the pronouns that Gina knows.                                                         |")
+        print("|  7. View the pronouns that Gina knows.                                                             |")
         print("|  8. Test Gina!                                                                                     |")
         print("|  9. View instructions for teaching Gina.                                                           |")
         print("| 10. Exit the program.                                                                              |")
@@ -67,7 +68,6 @@ if __name__ == "__main__":
             os.system(adp_cmd)
             os.system(noun_cmd)
             os.system(verb_cmd)
-            os.system(exam_cmd)
 
             with open('JSON/lexicon.json', 'r') as f: #calling lexicon.json for read and storing it into a dictionary
                 temp_dict = json.loads(f.read())
@@ -140,12 +140,12 @@ if __name__ == "__main__":
             with open('JSON/lexicon.json', 'r') as f: #calling lexicon.json for read and storing it into a dictionary
                 temp_dict = json.loads(f.read())
 
-            print("\n-----------------------------")
-            print("|  {:<12} {:<10}  |".format('Preposition','Postposition'))
-            print("-----------------------------")
+            print("\n----------------------------------")
+            print("|  {:<12} {:<15}  |".format('Preposition','Postposition'))
+            print("----------------------------------")
             for prep in temp_dict["adpositions"]:
-                print("|  {:<12} {:<10}  |".format(prep, temp_dict["adpositions"][prep]))
-            print("-----------------------------\n")
+                print("|  {:<12} {:<15}  |".format(prep, temp_dict["adpositions"][prep]))
+            print("----------------------------------\n")
 
             r = input("Press enter to go back to the menu.")
             if r == "":
@@ -204,6 +204,10 @@ if __name__ == "__main__":
             print("| 13. No imperatives, questions or fragmented sentences.                                                                                   |")
             print("| 14. In general, simple sentences involving simple units of either language!                                                              |")
             print("--------------------------------------------------------------------------------------------------------------------------------------------")
+            r = input("Press enter to go back to the menu.")
+            if r == "":
+                os.system("clear") # Clears the screen
 
         elif option == '10':
+            os.system("clear") # Clears the screen
             sys.exit()
