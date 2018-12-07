@@ -21,7 +21,7 @@ body = {
 	'encoding_type': 'UTF32'
 }
 
-credentials = service_account.Credentials.from_service_account_file('file.json')
+credentials = service_account.Credentials.from_service_account_file('JSON/file.json')
 service = googleapiclient.discovery.build('language', 'v1', credentials=credentials)
 
 request = service.documents().analyzeSyntax(body=body)
