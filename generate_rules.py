@@ -116,13 +116,14 @@ def print_syntax_rules(LN_Tokens):
         SVO[22] = 'Position of the object could not be determined from input.'
     else:
         object_pos = o_change[0][0]
-        arr1 = []
-        arr2 = []
-        flag = False
+        # If the differing string is < 2 in length, it's probably just an article
         if len(LN_Tokens[0][object_pos]) <= 2:
-            flag = True
-            arr1 = np.delete(LN_Tokens[0], object_pos)
-            arr2 = np.delete(LN_Tokens[5], object_pos)
+            arr1 = LN_Tokens[0]
+            arr2 = LN_Tokens[5]
+            # Replace the text with the same text
+            np.put(arr1, object_pos, 'sm')
+            np.put(arr2, object_pos, 'sm')
+            # And look for the next diff
             object_pos = np.where(arr1 != arr2)[0][0]
 
     # using the position in the sentence as a key (string only) and storing the value
@@ -142,10 +143,7 @@ def print_syntax_rules(LN_Tokens):
     # Get the noun that is constant in the preposition case
     # from when we parsed object
     if o_change[0].size != 0:
-        if flag:
-            noun_p = arr1[object_pos]
-        else:
-            noun_p = LN_Tokens[0][object_pos]
+        noun_p = LN_Tokens[0][object_pos]
 
         largest = -1
         for word in LN_Tokens[1]:
@@ -268,7 +266,7 @@ if __name__ == '__main__':
        print("Sentence in English: " + sentence)
        h_input = input("Enter translation in your language: ")
        LN_Sentences.append(h_input)
-    
+
     # Tokenise the inputs. LN_Tokens = [['hello','world']['sentence','two']]
     for h_st in LN_Sentences:
         # Change all the words to lowercase to avoid difference between cases like 'Noun' and 'noun'
