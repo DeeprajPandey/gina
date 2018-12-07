@@ -21,6 +21,7 @@ ADP_Lexicon = lexicon_dict['adpositions']
 #PRONOUNLEXICON: Englishkey: Hindikey
 Pronoun_Lexicon = lexicon_dict['pronouns'] #Print this and provide spelling to user, ask user to separate mujh ko.
 #EST = [['The', 'DET'], ['you', 'PRON'],['write', 'VERB'], ['on', 'ADP'], ['big', 'ADJ'], ['and', 'CONJ'],['fat', 'ADJ'], ['cat', 'NOUN']]
+# Part III - code for reading from partsOfSpeech.json and creating the nested list, EST and taking command line args for HST, done by Abhinav Masalia
 EST = []
 with open('JSON/partsOfSpeech.json', 'r') as f: #calling partsOfSpeech.json for read and storing it into a dictionary
     pos_dict = json.loads(f.read())
@@ -40,6 +41,7 @@ for x in sys.argv: #taking the hindi text from the command line and storing into
         h_arg = h_arg + x + ' '
     h_index=1
 HST = h_arg.split() #splits individual words into a list which is stored in HST
+# Part III ends
 
 HST_size = len(HST)
 EST_size = len(EST)

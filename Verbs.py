@@ -23,6 +23,7 @@ Pronoun_Lexicon = lexicon_dict['pronouns'] #Print this and provide spelling to u
 #EST = [['The', 'DET'], ['you', 'PRON'],['write', 'VERB'], ['on', 'ADP'], ['big', 'ADJ'], ['and', 'CONJ'],['fat', 'ADJ'], ['cat', 'NOUN']]
 
 #EST = [['The', 'DET'], ['you', 'PRON'],['write', 'VERB'], ['on', 'ADP'], ['the', 'DET'], ['me', 'PRON']]
+# Part III - code for reading from partsOfSpeech.json and creating the nested list, EST and taking command line args for HST, done by Abhinav Masalia
 EST = []
 with open('JSON/partsOfSpeech.json', 'r') as f: #calling partsOfSpeech.json for read and storing it into a dictionary
     pos_dict = json.loads(f.read())
@@ -42,6 +43,7 @@ for x in sys.argv: #taking the hindi text from the command line and storing into
         h_arg = h_arg + x + ' '
     h_index=1
 HST = h_arg.split() #splits individual words into a list which is stored in HST
+# Part III ends
 
 HST_size = len(HST)
 EST_size = len(EST)
@@ -83,9 +85,9 @@ for word in EST:
 				#print(Obj_exists)
 				if(found): # interceding prepositions give rise to sentences like 'The cat is on the table'
 					HST_index = HST.index(Current_word_h) #only one instance
-					
+
 					HST_index= HST_index+1 #We have reached the verb in Hindi SOV if object doesn't exist: SV
-					
+
 					VG = NG #verb inflects for subject
 					if(Obj_exists):
 						if(HST[HST_index] =='ek'): #skip article
@@ -93,14 +95,14 @@ for word in EST:
 						skipper=0
 						while(skipper<ADP_count): #to count adjectives before the object, adpositions
 							HST_index= HST_index+1
-							
+
 							skipper = skipper+1
 							if(HST[HST_index] == 'aur' or HST[HST_index] == 'or' or HST[HST_index] == 'aar' or HST[HST_index] == 'lekin'): #consecutive adjectives in Hindi may be interlocuted by 'and' and 'but'
 								HST_index= HST_index+1 #we have reached the last adjective
 						HST_index= HST_index+1 #We have reached the verb in Hindi SOV if it exists
 					if(HST[HST_index] == 'ko'):
 						HST_index= HST_index+1
-					
+
 					H_verb = HST[HST_index]
 					Person = 'Third Person' #because there were no plural nouns, and the subject was a noun, not the pronoun 'I'
 					if(VG=='U'):

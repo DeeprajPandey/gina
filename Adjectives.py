@@ -20,6 +20,7 @@ ADP_Lexicon = lexicon_dict['adpositions']
 #PRONOUNLEXICON: Englishkey: Hindikey
 Pronoun_Lexicon = lexicon_dict['pronouns'] #Print this and provide spelling to user, ask user to separate mujh ko.
 #EST = [['The', 'DET'], ['you', 'PRON'],['write', 'VERB'], ['on', 'ADP'], ['big', 'ADJ'], ['and', 'CONJ'],['fat', 'ADJ'], ['cat', 'NOUN']]
+# Part III - code for reading from partsOfSpeech.json and creating the nested list, EST and taking command line args for HST, done by Abhinav Masalia
 EST = []
 with open('JSON/partsOfSpeech.json', 'r') as f: #calling partsOfSpeech.json for read and storing it into a dictionary
     pos_dict = json.loads(f.read())
@@ -39,6 +40,7 @@ for x in sys.argv: #taking the hindi text from the command line and storing into
         h_arg = h_arg + x + ' '
     h_index=1
 HST = h_arg.split() #splits individual words into a list which is stored in HST
+# Part III ends
 
 HST_size = len(HST)
 EST_size = len(EST)
@@ -59,7 +61,7 @@ for word in EST:
 			Saved_Accusative_Inflection=''
 		while(search_index < EST_size and updated==False):
 			#print(word[0])
-			
+
 			Current_word=EST[search_index][0]
 			#print(Current_word)
 			Current_word_tag = EST[search_index][1]
@@ -180,8 +182,8 @@ for word in EST:
 					if(updated==False):
 						ADJ_Lexicon.update({word[0]: [H_ADJ, H_ADJ, H_ADJ]}) #nominative, accusative same for female
 						updated=True
-					
-		
+
+
 
 # Load the updated lexicon to the file
 updated_lex = {
