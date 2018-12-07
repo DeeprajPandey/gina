@@ -1,20 +1,6 @@
 import re, string
 import numpy as np
 
-# See how "far" two strings are from each other, character-wise
-def hamming_distance(s1, s2):
-    # Ensure length of s1 >= s2
-    if len(s2) > len(s1):
-        s1, s2 = s2, s1
-    
-    # Distance is difference in length + differing chars
-    distance = len(s1) - len(s2)
-    for i, c in enumerate(s2):
-        if c != s1[i]:
-            distance += 1
-
-    return distance
-
 # sherlock and watson are the 2 strings we will be dealing with today
 def jaro_winkler_distance(sherlock, watson):
     sherlock_len = len(sherlock)
