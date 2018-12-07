@@ -1,3 +1,7 @@
+# Our gateway to the holy grail!
+# All the API calls are made through this file. Text is passed around through sys args
+# Written by Deepraj Pandey
+
 #!/usr/bin/env python
 
 """Musings with the Google Cloud Natural Language API syntax analysis"""

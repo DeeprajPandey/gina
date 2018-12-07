@@ -1,3 +1,9 @@
+# Part I - the magic trick
+# Gina asks the user to translate a bunch of sentences and goes on to deduce a few syntax
+# rules in that language. Very rudimentary but it sure was tough (and fun) to design :D
+#
+# Written by Deepraj Pandey
+
 import re, string
 import numpy as np
 
@@ -229,6 +235,8 @@ regex = re.compile('[%s]' % re.escape(string.punctuation))
 
 # Get the user translated inputs if the program is run explicitly
 if __name__ == '__main__':
+    # We have also included the user inputs in different languages from our few rounds of Alpha Testing.
+    # Credits: our friends who contributed with these sentences
     # Hindi
     #LN_Sentences = ["Ladki kela khaati hai.", "Kele ke paas?", "Chhoti makhi.", "Kele ke upar.", "Makhi kela khaati hai.", "Ladki makhi khaati hai.", "Dukhi makhi.", "Ladki kela fenkti hai.", "Dukhi ladki."]
     # Odia
