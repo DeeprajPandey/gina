@@ -178,34 +178,43 @@ def print_syntax_rules(LN_Tokens):
         
     mid1 = len(LN_Tokens[1])/2
     mid2 = len(LN_Tokens[3])/2
-    if (new_noun1_index_p < mid1 and new_noun2_index_p < mid2):
+    if (new_noun1_index_p <= mid1 and new_noun2_index_p <= mid2):
         print("\nyour prepositions come after nouns (postpositions),")
-    elif (new_noun1_index_p >= mid1 and new_noun2_index_p >= mid2):
+    elif (new_noun1_index_p > mid1 and new_noun2_index_p > mid2):
         print("\nyour prepositions come before nouns,")
     else:
         print("PN/NP couldn't be determined with the data currently available.")
     
-    # Adpositions change in third and seventh
-    # ad_pos = np.where(LN_Tokens[2] != LN_Tokens[6])[0][0]
-    
+
     if sub_change[0].size != 0:
         # Get the unchanging noun
         noun_ad = LN_Tokens[4][sub_pos]
         
+        # Adpositions change in third and seventh sentence
         for word in LN_Tokens[2]:
             if jaro_winkler_distance(noun_ad, word) >= 0.9 and hamming_distance(noun_ad, word) <= 1:
-                new_noun_index_a = np.where(word == LN_Tokens[2])[0][0]
-        
-        mid1 = len(LN_Tokens[2])/2
-        mid2 = len(LN_Tokens[6])/2
-        if (new_noun_index_a <= mid1 and new_noun_index_a <= mid2):
-            print("and adjectives come before nouns.")
-        elif (new_noun_index_a > mid1 and new_noun_index_a > mid2):
-            print("and adjectives come after nouns.")
-        else:
-            print("AN/NA couldn't be determined with the data currently available.")
+                new_noun1_index_a = np.where(word == LN_Tokens[2])[0][0]
+        for word in LN_Tokens[6]:
+            if jaro_winkler_distance(noun_ad, word) >= 0.9 and hamming_distance(noun_ad, word) <= 1:
+                new_noun2_index_a = np.where(word == LN_Tokens[6])[0][0]
+    
+    # Faulty user input - subject does not change.
     else:
-        print("AN/NA couldn't be determined since subject could not be determined.")
+        temp_lst = list(set(LN_Tokens[1]).intersection(LN_Tokens[3]))
+        temp_lst.sort(key=len, reverse=True)
+        # Assuming the longest string will be the noun
+        nn = temp_lst[0]
+        new_noun1_index_a = np.where(nn == LN_Tokens[2])[0][0]
+        new_noun2_index_a = np.where(nn == LN_Tokens[6])[0][0]
+
+    mid1 = len(LN_Tokens[2])/2
+    mid2 = len(LN_Tokens[6])/2
+    if (new_noun1_index_a <= mid1 and new_noun2_index_a <= mid2):
+        print("and adjectives come before nouns.")
+    elif (new_noun1_index_a > mid1 and new_noun2_index_a > mid2):
+        print("and adjectives come after nouns.")
+    else:
+        print("AN/NA couldn't be determined with the data currently available.")
 
 # End of the syntax_rules function
 
