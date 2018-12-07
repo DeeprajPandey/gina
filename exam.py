@@ -114,11 +114,22 @@ while True:
 if found:
     print("Word: Unknown")
 else:
-    check = input("\nIs the information learned about the word correct?\n(y) - yes or (n) or no\n")
-    if check == 'n' or check == 'no':
+    print("\nIs the category of the word correct?\n(y) - yes or (n) or no")
+    categ_check = input("")
+    if categ_check == 'n' or categ_check == 'no':
         # Deleting the word from Gina's lexicon if the user feels the information learnt by Gina is wrong
         del lex_dict[category][exam_question]
         # Writing back the updated lexicon to lexicon.json
         with open('JSON/lexicon.json', 'w') as f:
             json.dump(lex_dict, f, indent = 2)
         print("Gina removed the word, \"" + exam_question + "\" from her lexicon!")
+    else:
+        print("\nIs the information learned about the word correct?\n(y) - yes or (n) or no")
+        info_check = input("")
+        if info_check == 'n' or info_check == 'no':
+            # Deleting the word from Gina's lexicon if the user feels the information learnt by Gina is wrong
+            del lex_dict[category][exam_question]
+            # Writing back the updated lexicon to lexicon.json
+            with open('JSON/lexicon.json', 'w') as f:
+                json.dump(lex_dict, f, indent = 2)
+            print("Gina removed the word, \"" + exam_question + "\" from her lexicon!")
