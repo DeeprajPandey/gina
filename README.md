@@ -36,4 +36,4 @@ For generating syntax rules for any language, Gina will give you a paragraph to 
 ```
 
 ### License
-MIT
+CC BY-NC 4.0 International
