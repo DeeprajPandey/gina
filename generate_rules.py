@@ -167,11 +167,11 @@ def print_syntax_rules(LN_Tokens):
     mid1 = len(LN_Tokens[1])/2
     mid2 = len(LN_Tokens[3])/2
     if (new_noun1_index_p < mid1 and new_noun2_index_p < mid2):
-        print("\nyour prepositions come after nouns (postpositions),")
+        print("\nyour prepositions usually come after nouns (postpositions),")
     # >= since mid/2 and not mid/2-1
     # Assuming max difference of 1 between num of elements in sen 1 and sen 3
     elif (new_noun1_index_p >= mid1 and new_noun2_index_p >= mid2):
-        print("\nyour prepositions come before nouns,")
+        print("\nyour prepositions usually come before nouns,")
     else:
         print("PN/NP couldn't be determined with the data currently available.")
     
@@ -207,9 +207,9 @@ def print_syntax_rules(LN_Tokens):
     ad = temp_lst[0]
     adj_pos = np.where(ad == LN_Tokens[6])[0][0]
     if (new_noun1_index_a < adj_pos and new_noun2_index_a < adj_pos):
-        print("and adjectives come after nouns.")
+        print("and adjectives usually come after nouns.")
     elif (new_noun1_index_a > adj_pos and new_noun2_index_a > adj_pos):
-        print("and adjectives come before nouns.")
+        print("and adjectives usually come before nouns.")
     else:
         print("AN/NA couldn't be determined with the data currently available.")
 
