@@ -2,7 +2,7 @@
   "sentences": [
     {
       "text": {
-        "content": "The sky is blue",
+        "content": "The long class is boring",
         "beginOffset": 0
       }
     }
@@ -28,65 +28,15 @@
         "voice": "VOICE_UNKNOWN"
       },
       "dependencyEdge": {
-        "headTokenIndex": 1,
+        "headTokenIndex": 2,
         "label": "DET"
       },
       "lemma": "The"
     },
     {
       "text": {
-        "content": "sky",
+        "content": "long",
         "beginOffset": 4
-      },
-      "partOfSpeech": {
-        "tag": "NOUN",
-        "aspect": "ASPECT_UNKNOWN",
-        "case": "CASE_UNKNOWN",
-        "form": "FORM_UNKNOWN",
-        "gender": "GENDER_UNKNOWN",
-        "mood": "MOOD_UNKNOWN",
-        "number": "SINGULAR",
-        "person": "PERSON_UNKNOWN",
-        "proper": "PROPER_UNKNOWN",
-        "reciprocity": "RECIPROCITY_UNKNOWN",
-        "tense": "TENSE_UNKNOWN",
-        "voice": "VOICE_UNKNOWN"
-      },
-      "dependencyEdge": {
-        "headTokenIndex": 2,
-        "label": "NSUBJ"
-      },
-      "lemma": "sky"
-    },
-    {
-      "text": {
-        "content": "is",
-        "beginOffset": 8
-      },
-      "partOfSpeech": {
-        "tag": "VERB",
-        "aspect": "ASPECT_UNKNOWN",
-        "case": "CASE_UNKNOWN",
-        "form": "FORM_UNKNOWN",
-        "gender": "GENDER_UNKNOWN",
-        "mood": "INDICATIVE",
-        "number": "SINGULAR",
-        "person": "THIRD",
-        "proper": "PROPER_UNKNOWN",
-        "reciprocity": "RECIPROCITY_UNKNOWN",
-        "tense": "PRESENT",
-        "voice": "VOICE_UNKNOWN"
-      },
-      "dependencyEdge": {
-        "headTokenIndex": 2,
-        "label": "ROOT"
-      },
-      "lemma": "be"
-    },
-    {
-      "text": {
-        "content": "blue",
-        "beginOffset": 11
       },
       "partOfSpeech": {
         "tag": "ADJ",
@@ -104,9 +54,84 @@
       },
       "dependencyEdge": {
         "headTokenIndex": 2,
-        "label": "ACOMP"
+        "label": "AMOD"
       },
-      "lemma": "blue"
+      "lemma": "long"
+    },
+    {
+      "text": {
+        "content": "class",
+        "beginOffset": 9
+      },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "SINGULAR",
+        "person": "PERSON_UNKNOWN",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": {
+        "headTokenIndex": 4,
+        "label": "NSUBJ"
+      },
+      "lemma": "class"
+    },
+    {
+      "text": {
+        "content": "is",
+        "beginOffset": 15
+      },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "INDICATIVE",
+        "number": "SINGULAR",
+        "person": "THIRD",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "PRESENT",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": {
+        "headTokenIndex": 4,
+        "label": "AUX"
+      },
+      "lemma": "be"
+    },
+    {
+      "text": {
+        "content": "boring",
+        "beginOffset": 18
+      },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": {
+        "headTokenIndex": 4,
+        "label": "ROOT"
+      },
+      "lemma": "bore"
     }
   ],
   "language": "en"

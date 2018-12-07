@@ -119,6 +119,11 @@
       "vidambana",
       "M",
       ""
+    ],
+    "class": [
+      "kaksha",
+      "F",
+      "kaksha"
     ]
   },
   "verbs": {
@@ -235,6 +240,11 @@
     "stays": [
       "",
       "rehti",
+      "Third Person"
+    ],
+    "boring": [
+      "",
+      "lukhi",
       "Third Person"
     ]
   },

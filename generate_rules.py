@@ -116,32 +116,32 @@ def print_syntax_rules(HN_tokens):
     SVO[verb_pos] = 'Verb'
     SVO[object_pos] = 'Object'
     
-    print("\nIn your language, SVO order is", end = ' ')
+    print("\nIn your language, the SOV order is", end = ' ')
     for key in sorted(SVO.keys()):
         print('%s' % SVO[key], end = ', ')
     
     # Get the noun that is constant in the preposition case
     # from when we parsed object
     if flag:
-        noun_p = arr1[object_pos].lower()
+        noun_p = arr1[object_pos]
     else:
-        noun_p = HN_tokens[0][object_pos].lower()
+        noun_p = HN_tokens[0][object_pos]
     
     for word in HN_tokens[1]:
-        if jaro_winkler_distance(noun_p, word.lower()) >= 0.9 and hamming_distance(noun_p, word.lower()) <= 1:
+        if jaro_winkler_distance(noun_p, word) >= 0.9 and hamming_distance(noun_p, word) <= 1:
             # The noun must have changed it's position as preposition might come with morphemes
             new_noun1_index_p = np.where(word == HN_tokens[1])[0][0]
     for word in HN_tokens[3]:
-        if jaro_winkler_distance(noun_p, word.lower()) >= 0.9 and hamming_distance(noun_p, word.lower()) <= 1:
+        if jaro_winkler_distance(noun_p, word) >= 0.9 and hamming_distance(noun_p, word) <= 1:
             # The noun must have changed it's position as preposition might come with morphemes
             new_noun2_index_p = np.where(word == HN_tokens[1])[0][0]
 
     mid1 = len(HN_tokens[1])/2
     mid2 = len(HN_tokens[3])/2
     if (new_noun1_index_p < mid1 and new_noun2_index_p < mid2):
-        print("\nprepositions come after Nouns (postpositions),")
+        print("\nyour prepositions come after nouns (postpositions),")
     elif (new_noun1_index_p >= mid1 and new_noun2_index_p >= mid2):
-            print("\nprepositions come before Nouns,")
+            print("\nyour prepositions come before nouns,")
     else:
         print("PN/NP couldn't be determined with the data currently available.")
     
@@ -149,10 +149,10 @@ def print_syntax_rules(HN_tokens):
     # ad_pos = np.where(HN_tokens[2] != HN_tokens[6])[0][0]
     
     # Get the unchanging noun
-    noun_ad = HN_tokens[4][sub_pos].lower()
+    noun_ad = HN_tokens[4][sub_pos]
     
     for word in HN_tokens[2]:
-        if jaro_winkler_distance(noun_ad, word.lower()) >= 0.9 and hamming_distance(noun_ad, word.lower()) <= 1:
+        if jaro_winkler_distance(noun_ad, word) >= 0.9 and hamming_distance(noun_ad, word) <= 1:
             # The noun must have changed it's position as preposition might come with morphemes
             new_noun_index_a = np.where(word == HN_tokens[2])[0][0]
     
@@ -204,7 +204,8 @@ if __name__ == '__main__':
     
     # Tokenise the inputs. HN_tokens = [['hello','world']['sentence','two']]
     for h_st in HN_Sentences:
-        tokenize = np.array(regex.sub('', h_st).split())
+        # Change all the words to lowercase to avoid difference between cases like 'Noun' and 'noun'
+        tokenize = np.array(regex.sub('', h_st).lower().split())
         HN_tokens.append(tokenize)
 
     # Now, send the tokenised form to 
