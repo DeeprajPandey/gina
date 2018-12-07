@@ -30,7 +30,7 @@ If you're on Windows, you may have to specify the full path to your python insta
 > ```
 
 ### Run
-Gina will give you a paragraph to translate. Do this very literally, without taking any meaning away from the sentences and she will show the syntax rules for the language you are translating into.
+For generating syntax rules for any language, Gina will give you a paragraph to translate. Do this very literally, without taking any meaning away from the sentences and she will show the syntax rules for the language you are translating into.
 ```sh
   $ python interface.py
 ```
