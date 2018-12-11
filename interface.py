@@ -6,9 +6,6 @@ from collections import OrderedDict
 # This helps us to use interface as a module to be imported, if need be
 if __name__ == "__main__":
     lex_dict = OrderedDict()
-    orig_words = 0
-    word_count = 0
-    end_word_count = 0
     word_list = []
     exam_cmd = "python3 exam.py" # Moving it outside the loop, so that the user can directly access the exam without input
     gen_rules = "python3 generate_rules.py"
@@ -37,6 +34,9 @@ if __name__ == "__main__":
             if r == "":
                 os.system("clear") # Clears the screen
         elif option == '2':
+            orig_words = 0
+            word_count = 0
+            end_word_count = 0
             # We don't need to ignore punctuations in the english input here, because when the API is called, the PUNCT tag is specifically skipped
             # in the rest of the python programs
             # We ask the user to input till they wish to stop. Also, after every input, we ask them if they wish to see the lexicon that Gina has developed
@@ -53,8 +53,8 @@ if __name__ == "__main__":
             for elem in word_list:
                 for categ in lex_dict:
                     for indiv in lex_dict[categ]:
-                        if elem == indiv:
-                            word_count = word_count + 1
+                        if elem != indiv: # This keeps track of whether the word is in Gina's lexicon
+                            word_count = word_count + 1 # word_count keeps track of how many new words have been input
             print("Give Gina its Hindi translation:", end = " ")
             h_Input = input("")
             hInput = regex.sub('', h_Input)
@@ -77,7 +77,10 @@ if __name__ == "__main__":
             words_learnt = end_word_count - orig_words
 
             # Prints the progress bar
-            count = float(words_learnt/word_count)*100
+            # If the user enters no new word for Gina, then count is not calculated and the default value of 0 is taken for Gina's learning progress calculation
+            count = 0
+            if word_count != 0:
+                count = float(words_learnt/word_count)*100
             total = 100
             suffix = 'learned.'
             bar_len = 50
